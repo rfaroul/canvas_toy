@@ -1,0 +1,11 @@
+#coloringBook {
+	border-color: cornflowerBlue;
+	border-style: dashed;
+}
+
+#eraseCanvas {
+	position: absolute;
+	top: 50px;
+	right: 414px;
+
+}
