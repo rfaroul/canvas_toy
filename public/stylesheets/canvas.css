@@ -9,3 +9,47 @@
 	right: 414px;
 
 }
+
+.crayon {
+	position: absolute;
+	font-weight: bold;
+}
+
+#blue {
+	color: #FFF;
+	background-color: #4997D0;
+	top: 89px;
+	right: 264px;
+}
+
+#red {
+	color: #FFF;
+	background-color: #ED0A3F;
+	top: 127px;
+	right: 266px;
+}
+
+#rawSienna {
+	color: #FFF;
+	background-color: #D27D46;
+	top: 164px;
+	right: 245px;
+}
+
+#orange {
+	color: #FFF;
+	background-color: #FF8833;
+	top: 55px;
+	right: 255px;
+}
+
+#cMajor {
+	position: absolute;
+	color: #4997D0;
+	height: 20px;
+	width: 20px;
+	top: 200px;
+	left: 50px;
+
+}
+

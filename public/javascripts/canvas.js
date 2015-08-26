@@ -95,7 +95,7 @@ function redraw() {
 	console.log('clickY array ', clickY);
 	//context.clearRect(0, 0, context.canvas.width, context.canvas.height); //clear the canvas
 
-	context.strokeStyle = "#ED0A3F";
+	context.strokeStyle = "#4997D0";
 	context.lineJoin = "round";
 	context.lineWidth = 5;
 	context.beginPath();
@@ -121,27 +121,42 @@ $('#eraseCanvas').click(function() {
 	clearCanvas(); 
 });
 
+//AUDIO
+//when click blue, play and turn text to "pause"
+//when click blue, pause and turn text to "blue"
+
+function playAudio() {
+	var blueCrayon = document.getElementById('blue'); //grab the blue button
+	var cMajor = document.getElementById('cMajor'); //grab the audio file
+	var play = (blue).click( function () {
+		cMajor.play();
+	} 
+	// cMajor.play();
+}
+
 //SET COLORS
-var colorRed = "#ED0A3F";
-var redOrange = "#FF681F";
-var orange = "#FF8833";
-var yellowRed = "#ECB176";
-var yellow = "#FBE870";
-var yellowGreen = "#C5E17A";
-var colorGreen = "#3AA655";
-var blueGreen = "#0095B7";
-var colorBlue = "#4997D0";
-var blueViolet = "#6456B7";
-var colorPurple = "#6B3FA0";
-var redViolet = "#BB3385";
-var carnationPink = "#FFA6C9";
-var brown = "#AF593E";
-var black = "#000000";
-var white = "#FFFFFF";
-
-
-var currentColor;
+var currentColor = blue;
 var clickColor = [];
+
+// var blue = "#4997D0";
+// var red = "#ED0A3F";
+// var rawSienna = "#D27D46";
+// var orange = "#FF8833";
+// var yellowRed = "#ECB176";
+// var yellow = "#FBE870";
+// var yellowGreen = "#C5E17A";
+// var green = "#3AA655";
+// var blueGreen = "#0095B7";
+// var blueViolet = "#6456B7";
+// var purple = "#6B3FA0";
+// var redViolet = "#BB3385";
+// var carnationPink = "#FFA6C9";
+// var brown = "#AF593E";
+// var black = "#000000";
+// var white = "#FFFFFF";
+
+
+
 
 
 
