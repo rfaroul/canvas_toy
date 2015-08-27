@@ -103,6 +103,9 @@ $('#coloringBook').mouseup(end);
 	
 var colorTime = []; //push array of [color, time] into here 
 
+var song = [] //keys are colors, values are times
+
+
 	function end() {
 	    var end_time = new Date();
 	    // console.log('now', end_time);
@@ -146,19 +149,11 @@ $('#eraseCanvas').click(function() {
 });
 
 //AUDIO
-//when click blue, play and turn text to "pause"
-//when click blue, pause and turn text to "blue"
 
-	// setTimeout(function playAudio() {
-	// 	$("#blue").click( function () {
-	// 	cMajor.play(); //play cMajor on click
-
-	// 	}); 
-	// } , 3000 );
 	console.log("before click event set");
 
 	$("#blue").click( function() {
-		console.log("inside click event callbac");
+		console.log("inside click event callback");
 
 		cMajor.play();
 		console.log("after sound play");
@@ -168,26 +163,80 @@ $('#eraseCanvas').click(function() {
 		}, 2804 );
 		console.log("just set set timeout");
 	});
-	console.log('after click event set');
-
 
 	
+	
+var note = {
+	chord: cMajor,
+	soundLength: 2084
+}
 
+var note2 = {
+	chord: fMajor,
+	soundLength: 9000
+}
+
+var note3 = {
+	chord: fSharpMajor,
+	soundLength: 12000
+}
+
+songs = [];
+songs.push(note, note2, note3);
+
+//playAudio is a function that will play notes at specified length to create a song
+
+	function playAudio (songs) {
+
+		console.log("about to play")
+		note = songs.pop();
+		console.log( note.chord, note.soundLength)
+
+		note.chord.play();
+		console.log("after sound play");
+
+		setTimeout( function () {
+			console.log("set timeout just finished");
+			note.chord.pause();
+			console.log("finished");
+			//want to play another different sound 
+			playAudio(songs);
+		}, note.soundLength );
+	}
+
+	playAudio(songs);
+
+//songs.pop();
+	// whenWeAreDone = 
+	// another play function that takes soundLength & currentColor as parameters
+
+// playAudio(function () {
+// 	console.log("awesome");
+// });
+
+//playAudio(whenWeAreDone);
+
+
+
+
+
+	//$("#blue").click(playAudio);
+
+		// console.log("about to play sound 2")
+		// cMajor.play();
+		// console.log("after sound play 2");
+		// setTimeout( function () {
+		// 	console.log("set timeout just finished 2");
+		// 	cMajor.pause();
+		// }, 2804 );
+		// console.log("end of stuff we did");
 
 //click play
 //play sound
 //after time of soundLength, pause sound
 //restartAudio();
 
-// setTimeout( function() { 
-// 	alert("Hello"); 
-// }, 3000);
-
 // restart Audio when finished playing for specified length of time
-	// function restartAudio() {
-	// 	if(window.HTMLAudioElement)
-	// }
-	// cMajor.currentTime = 0;
 	
 
 
