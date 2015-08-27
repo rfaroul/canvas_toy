@@ -150,20 +150,6 @@ $('#eraseCanvas').click(function() {
 
 //AUDIO
 
-	// console.log("before click event set");
-
-	// $("#blue").click( function() {
-	// 	console.log("inside click event callback");
-
-	// 	cMajor.play();
-	// 	console.log("after sound play");
-	// 	setTimeout( function () {
-	// 		console.log("set timeout just finished");
-	// 		cMajor.pause();
-	// 	}, 2804 );
-	// 	console.log("just set set timeout");
-	// });
-
 var note = {
 	chord: cMajor,
 	soundLength: 2084
@@ -179,84 +165,61 @@ var note3 = {
 	soundLength: 12000
 };
 
-song = [];
+var song = [];
 song.push(note, note2, note3);
 
-$( '#play' ).click( function playAudio ( song ) {
+$('#play').click( playAudio );
+
+function playAudio ( event ) {
 	console.log("inside click event callback");
+		// if (song.length >= 1) {
+		console.log("about to play");
+		
+		currentNote = song.pop();
+		console.log(song); //song is a click event, not a function
+		console.log( currentNote.chord, currentNote.soundLength);
 
-		if (song.length >= 1) {
-		console.log("about to play")
-		note = song.pop();
-		console.log( note.chord, note.soundLength)
-
-		note.chord.play();
+		currentNote.chord.play();
 		console.log("after sound play");
 
 		setTimeout( function () {
 			console.log("set timeout just finished");
-			note.chord.pause();
+			currentNote.chord.pause();
 			console.log("finished");
-			//want to play another different sound 
 			playAudio(song);
-		}, note.soundLength );
-		}
-		else if (song.length = 1) {
-			console.log("ACTUALLY DONE");
-			song.currentTime = 0;
-			}
-		cMajor.currentTime = 0;
-		console.log("cMajor", cMajor.currentTime);
-});
+		}, currentNote.soundLength );
+		//song parameter loops until there are no more notes in the song array. then you get an error
+		//how to get it to stop
+		 };
 	
-	playAudio(song);
-
-
-
-//song parameter loops until there are no more notes in the song array. then you get an error
-	// function playAudio (song) {
-	// 	if (song.length >= 1) {
-	// 	console.log("about to play")
-	// 	note = song.pop();
-	// 	console.log( note.chord, note.soundLength)
-
-	// 	note.chord.play();
-	// 	console.log("after sound play");
-
-	// 	setTimeout( function () {
-	// 		console.log("set timeout just finished");
-	// 		note.chord.pause();
-	// 		console.log("finished");
-	// 		//want to play another different sound 
-	// 		playAudio(song);
-	// 	}, note.soundLength );
-	// 	}
-	// 	else if (song.length = 1) {
-	// 		console.log("ACTUALLY DONE");
-	// 		song.currentTime = 0;
-	// 		}
-	// 	cMajor.currentTime = 0;
-	// 	console.log("cMajor", cMajor.currentTime);
-
-	// }
-
-	// playAudio(song);
-
-
-	//$("#blue").click(playAudio);
-
-		// console.log("about to play sound 2")
-		// cMajor.play();
-		// console.log("after sound play 2");
-		// setTimeout( function () {
-		// 	console.log("set timeout just finished 2");
-		// 	cMajor.pause();
-		// }, 2804 );
-		// console.log("end of stuff we did");
+	
+	
 
 // restart Audio when finished playing for specified length of time
-	
 
+//MEETING WITH AKIRA 5:30PM	
+//OPTION 1
+	//user clicks purple 
+	//user draws with the purple crayon
+	//purple = gMajor
+	// var song = []; //empty array
+	// song.push( { chord: gMajor, soundLength: 1000 })
+	// 				note: ______ , 	time: _______
+
+
+//OR OPTION2: 
+//COULD HAVE A "NOTE" OBJECT
+	// function Note (chord, time) {
+	// 	this.chord = c; 
+	// 	this.time = t;
+	// 	this.poop = function() {
+	// 		console.log(this.time);
+	// 	};
+	// }
+	// var note = new Note(gMajor, 1000);
+	// song.push(note); //push note object into the empty song array
+	// note.poop();
+	//difference with making a constructor is that you can add methods and do weird things with the objects
 
 
 
