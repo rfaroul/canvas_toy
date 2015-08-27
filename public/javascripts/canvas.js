@@ -150,46 +150,44 @@ $('#eraseCanvas').click(function() {
 
 //AUDIO
 
-	console.log("before click event set");
+	// console.log("before click event set");
 
-	$("#blue").click( function() {
-		console.log("inside click event callback");
+	// $("#blue").click( function() {
+	// 	console.log("inside click event callback");
 
-		cMajor.play();
-		console.log("after sound play");
-		setTimeout( function () {
-			console.log("set timeout just finished");
-			cMajor.pause();
-		}, 2804 );
-		console.log("just set set timeout");
-	});
+	// 	cMajor.play();
+	// 	console.log("after sound play");
+	// 	setTimeout( function () {
+	// 		console.log("set timeout just finished");
+	// 		cMajor.pause();
+	// 	}, 2804 );
+	// 	console.log("just set set timeout");
+	// });
 
-	
-	
 var note = {
 	chord: cMajor,
 	soundLength: 2084
-}
+};
 
 var note2 = {
 	chord: fMajor,
 	soundLength: 9000
-}
+};
 
 var note3 = {
 	chord: fSharpMajor,
 	soundLength: 12000
-}
+};
 
-songs = [];
-songs.push(note, note2, note3);
+song = [];
+song.push(note, note2, note3);
 
-//playAudio is a function that will play notes at specified length to create a song
+$( '#play' ).click( function playAudio ( song ) {
+	console.log("inside click event callback");
 
-	function playAudio (songs) {
-
+		if (song.length >= 1) {
 		console.log("about to play")
-		note = songs.pop();
+		note = song.pop();
 		console.log( note.chord, note.soundLength)
 
 		note.chord.play();
@@ -200,24 +198,49 @@ songs.push(note, note2, note3);
 			note.chord.pause();
 			console.log("finished");
 			//want to play another different sound 
-			playAudio(songs);
+			playAudio(song);
 		}, note.soundLength );
-	}
-
-	playAudio(songs);
-
-//songs.pop();
-	// whenWeAreDone = 
-	// another play function that takes soundLength & currentColor as parameters
-
-// playAudio(function () {
-// 	console.log("awesome");
-// });
-
-//playAudio(whenWeAreDone);
+		}
+		else if (song.length = 1) {
+			console.log("ACTUALLY DONE");
+			song.currentTime = 0;
+			}
+		cMajor.currentTime = 0;
+		console.log("cMajor", cMajor.currentTime);
+});
+	
+	playAudio(song);
 
 
 
+//song parameter loops until there are no more notes in the song array. then you get an error
+	// function playAudio (song) {
+	// 	if (song.length >= 1) {
+	// 	console.log("about to play")
+	// 	note = song.pop();
+	// 	console.log( note.chord, note.soundLength)
+
+	// 	note.chord.play();
+	// 	console.log("after sound play");
+
+	// 	setTimeout( function () {
+	// 		console.log("set timeout just finished");
+	// 		note.chord.pause();
+	// 		console.log("finished");
+	// 		//want to play another different sound 
+	// 		playAudio(song);
+	// 	}, note.soundLength );
+	// 	}
+	// 	else if (song.length = 1) {
+	// 		console.log("ACTUALLY DONE");
+	// 		song.currentTime = 0;
+	// 		}
+	// 	cMajor.currentTime = 0;
+	// 	console.log("cMajor", cMajor.currentTime);
+
+	// }
+
+	// playAudio(song);
 
 
 	//$("#blue").click(playAudio);
@@ -230,11 +253,6 @@ songs.push(note, note2, note3);
 		// 	cMajor.pause();
 		// }, 2804 );
 		// console.log("end of stuff we did");
-
-//click play
-//play sound
-//after time of soundLength, pause sound
-//restartAudio();
 
 // restart Audio when finished playing for specified length of time
 	
