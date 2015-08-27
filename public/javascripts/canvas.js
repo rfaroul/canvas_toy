@@ -5,6 +5,28 @@ var canvasWidth = 600; //have to set canvas width and height here to clear the c
 var canvasHeight = 400;
 //set other canvas attributes in css 
 
+//SET COLORS
+var colorBlue = "#4997D0";
+
+var currentColor = colorBlue;
+var clickColor = [];
+
+
+// var red = "#ED0A3F";
+// var rawSienna = "#D27D46";
+// var orange = "#FF8833";
+// var yellowRed = "#ECB176";
+// var yellow = "#FBE870";
+// var yellowGreen = "#C5E17A";
+// var green = "#3AA655";
+// var blueGreen = "#0095B7";
+// var blueViolet = "#6456B7";
+// var purple = "#6B3FA0";
+// var redViolet = "#BB3385";
+// var carnationPink = "#FFA6C9";
+// var brown = "#AF593E";
+// var black = "#000000";
+// var white = "#FFFFFF";
 
 context.lineWidth = 10;
 context.lineJoin = context.lineCap = 'round';
@@ -79,11 +101,13 @@ $('#coloringBook').mouseup(end);
     	// console.log('start time', start_time);
 	}
 	
+var colorTime = []; //push array of [color, time] into here 
+
 	function end() {
 	    var end_time = new Date();
 	    // console.log('now', end_time);
 	    soundLength = end_time-start_time;
-	    console.log('soundLength', soundLength);
+	    console.log(currentColor, soundLength);
 	}
 //////////////////////
 
@@ -125,35 +149,47 @@ $('#eraseCanvas').click(function() {
 //when click blue, play and turn text to "pause"
 //when click blue, pause and turn text to "blue"
 
-function playAudio() {
-	var blueCrayon = document.getElementById('blue'); //grab the blue button
-	var cMajor = document.getElementById('cMajor'); //grab the audio file
-	var play = (blue).click( function () {
+	// setTimeout(function playAudio() {
+	// 	$("#blue").click( function () {
+	// 	cMajor.play(); //play cMajor on click
+
+	// 	}); 
+	// } , 3000 );
+	console.log("before click event set");
+
+	$("#blue").click( function() {
+		console.log("inside click event callbac");
+
 		cMajor.play();
-	} 
-	// cMajor.play();
-}
+		console.log("after sound play");
+		setTimeout( function () {
+			console.log("set timeout just finished");
+			cMajor.pause();
+		}, 2804 );
+		console.log("just set set timeout");
+	});
+	console.log('after click event set');
 
-//SET COLORS
-var currentColor = blue;
-var clickColor = [];
 
-// var blue = "#4997D0";
-// var red = "#ED0A3F";
-// var rawSienna = "#D27D46";
-// var orange = "#FF8833";
-// var yellowRed = "#ECB176";
-// var yellow = "#FBE870";
-// var yellowGreen = "#C5E17A";
-// var green = "#3AA655";
-// var blueGreen = "#0095B7";
-// var blueViolet = "#6456B7";
-// var purple = "#6B3FA0";
-// var redViolet = "#BB3385";
-// var carnationPink = "#FFA6C9";
-// var brown = "#AF593E";
-// var black = "#000000";
-// var white = "#FFFFFF";
+	
+
+
+//click play
+//play sound
+//after time of soundLength, pause sound
+//restartAudio();
+
+// setTimeout( function() { 
+// 	alert("Hello"); 
+// }, 3000);
+
+// restart Audio when finished playing for specified length of time
+	// function restartAudio() {
+	// 	if(window.HTMLAudioElement)
+	// }
+	// cMajor.currentTime = 0;
+	
+
 
 
 
