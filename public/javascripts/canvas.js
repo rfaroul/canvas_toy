@@ -190,7 +190,7 @@ song.push(note, note2, note3);
 $('#play').click( playAudio );
 
 function playAudio ( event ) {
-	if (song.length != 0) { 
+	//if (song.length != 0) { 
 	console.log("inside click event callback");
 		// if (song.length >= 1) {
 		console.log("about to play");
@@ -208,10 +208,10 @@ function playAudio ( event ) {
 			console.log("finished");
 			playAudio(song);
 		}, currentNote.soundLength );
-	}
-	else {
-		console.log("you're done!")
-		};
+	//}
+	// else {
+	// 	console.log("you're done!")
+	// 	};
 		//how to get it to stop
 		// restart Audio when finished playing for specified length of time
 };
