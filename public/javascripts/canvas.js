@@ -77,7 +77,7 @@ paint = true; //lets us know if the virtual crayon is pressing down on the paper
 	//if paint = true, record the value
 addClick(mouseX, mouseY);
 //UNCOMMENT FRIDAY 9:30AM
-//redraw(); //to update the canvas
+redraw(); //to update the canvas
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +153,7 @@ function redraw() {
 		context.closePath();
 		//UNCOMMENT @ 8:15
 		context.strokeStyle = clickColor[i];
+		
 		context.stroke();	
 		}
 	}
@@ -171,32 +172,60 @@ $('#eraseCanvas').click(clearCanvas);
 
 var note = {
 	chord: cMajor,
-	soundLength: 2084
+	soundLength: 12000
 };
 
 var note2 = {
 	chord: fMajor,
-	soundLength: 9000
+	soundLength: 500
 };
 
 var note3 = {
 	chord: fSharpMajor,
-	soundLength: 12000
+	soundLength: 1000
 };
 
 var song = [];
 song.push(note, note2, note3);
+console.log("notes", song); //array of 3 items
 
-$('#play').click( playAudio );
+console.log("before the click event");
 
-function playAudio ( event ) {
+
+//exercise 
+// var doThing = function(valueInFunction){
+
+// 	//"valueInFunction" is a new value 
+// 	console.log( "calling set timeout with: "+valueInFunction);
+// 	setTimeout(function(){
+// 		console.log("timeout, thing that happens later", valueInFunction )
+// 	}, 1000)
+	
+// }
+
+
+// for( var oldValue=0; oldValue<9; oldValue++){
+// 	doThing(oldValue);
+// 	console.log( "loop",oldValue);
+// }
+
+
+
+
+
+
+
+function playAudio ( userSong ) {
 	//if (song.length != 0) { 
 	console.log("inside click event callback");
+	console.log( event ); 
 		// if (song.length >= 1) {
 		console.log("about to play");
-		
-		currentNote = song.pop();
-		console.log(song); //song is a click event, not a function
+		console.log(note, note2, note3);
+		//song.push(note, note2, note3);
+		console.log("song array", userSong); 
+		currentNote = userSong.pop(); //playing one note over and over. WTF.
+		console.log("popped", userSong); //song is a click event, not a function
 		console.log( currentNote.chord, currentNote.soundLength);
 
 		currentNote.chord.play();
@@ -206,7 +235,8 @@ function playAudio ( event ) {
 			console.log("set timeout just finished");
 			currentNote.chord.pause();
 			console.log("finished");
-			playAudio(song);
+			playAudio(userSong);
+			console.log("what song are you playing?", userSong)
 		}, currentNote.soundLength );
 	//}
 	// else {
@@ -215,6 +245,12 @@ function playAudio ( event ) {
 		//how to get it to stop
 		// restart Audio when finished playing for specified length of time
 };
+
+$('#play').click( function(event){
+
+	playAudio( song );
+} );
+// playAudio(song);
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// TIMER FUNCTIONS //////////////////
@@ -226,7 +262,7 @@ function playAudio ( event ) {
 	
 var colorTime = []; //push array of [color, time] into here 
 
-var song = [] //keys are colors, values are times
+//var song = [] //keys are colors, values are times
 
 
 	function end() {
@@ -272,6 +308,9 @@ var song = [] //keys are colors, values are times
 //////// TO MAKE THIS MORE READABLE AND ACCESSIBLE
 // var redraw = require('redraw');
 // module.exports = function redraw() {
+
+//snapshot of canvas to save
+//change button values to notes/chords
 
 
 
