@@ -1,12 +1,10 @@
-function drawCanvas () { 
-
 	var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
 	var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
-}
+
 
 var paint; //global variable to be used later. (boolean)
-// var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
-// var canvasHeight = 375;
+var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
+var canvasHeight = 375;
 //set other canvas attributes in css 
 
 context.lineWidth = 10;
@@ -78,7 +76,8 @@ var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to
 paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
 	//if paint = true, record the value
 addClick(mouseX, mouseY);
-redraw(); //to update the canvas
+//UNCOMMENT FRIDAY 9:30AM
+//redraw(); //to update the canvas
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,8 +96,9 @@ crayonMove = $('#coloringBook').mousemove(function(event) {
 //crayon is off the paper
 crayonOff = $('#coloringBook').mouseup(function(event) {
 	paint = false;
-	// clickY.length = 0;
-	// clickX.length = 0;
+	clickY.length = 0; //reset x coordinates
+	clickX.length = 0; //reset y coordinates
+
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +133,7 @@ $('#coloringBook').mouseup(end);
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
 function redraw() {
 	//UNCOMMENT @ 8:19PM
-	// context.clearRect(0, 0, context.canvas.width, context.canvas.height); //clear the canvas
+	//context.clearRect(0, 0, context.canvas.width, context.canvas.height); //clear the canvas
 	context.strokeStyle = currentColor;
 	context.lineJoin = "round";
 	context.lineWidth = 5;
@@ -142,8 +142,8 @@ function redraw() {
 	console.log('clickX array ', clickX);
 	console.log('clickY array ', clickY);
 
-	for(var i=0; i < clickX.length; i++) {
 		context.beginPath(); //doesn't work if it's on line 124. why?
+	for(var i=0; i < clickX.length; i++) {
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
@@ -160,12 +160,11 @@ function redraw() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
 function clearCanvas() {
-	context.clearRect(0, 0, canvasWidth, canvasHeight); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
-}
+	context.clearRect(0, 0, canvas.width, canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
+	//canvas.width = canvas.width;
+};
 
-$('#eraseCanvas').click(function() {
-	clearCanvas(); 
-});
+$('#eraseCanvas').click(clearCanvas);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
