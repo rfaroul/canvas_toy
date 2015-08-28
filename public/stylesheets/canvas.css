@@ -1,6 +1,7 @@
 #coloringBook {
 	border-color: cornflowerBlue;
 	border-style: dashed;
+	background-color: #F8EFE6;
 }
 
 #eraseCanvas {
@@ -13,35 +14,127 @@
 .crayon {
 	position: absolute;
 	font-weight: bold;
+	right: 255px;
 }
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*//////////////////////  COLORS  ////////////////////////////////*/
 
 #blue {
 	color: #FFF;
 	background-color: #4997D0;
-	top: 89px;
-	right: 264px;
+	top: 116px;
+	right: 328px;
 }
 
 #red {
 	color: #FFF;
 	background-color: #ED0A3F;
-	top: 127px;
-	right: 266px;
+	top: 157px;
+	right: 236px;
 }
 
 #rawSienna {
 	color: #FFF;
 	background-color: #D27D46;
-	top: 164px;
-	right: 245px;
+	top: 201px;
+	right: 217px;
 }
 
 #orange {
 	color: #FFF;
 	background-color: #FF8833;
-	top: 55px;
-	right: 255px;
+	top: 573px;
+	right: 318px;
 }
+
+#vividTangerine {
+	color: #FFF;
+	background-color: #FF9980;
+	top: 285px;
+	right: 198px;
+}
+#yellow {
+	color: #FFF;
+	background-color: #FBE870;
+	top: 284px;
+	right: 325px;
+}
+
+#yellowGreen {
+	color: #FFF;
+	background-color: #C5E17A;
+	top: 285px;
+	right: 417px;
+}
+
+#green {
+	color: #FFF;
+	background-color: #3AA655;
+	top: 115px;
+	right: 229px;
+}
+
+#blueGreen {
+	color: #FFF;
+	background-color: #0095B7;
+	top: 156px;
+	right: 313px;
+}
+
+#blueViolet {
+	color: #FFF;
+	background-color: #6456B7;
+	top: 241px;
+	right: 220px;
+}
+
+#purple {
+	color: #FFF;
+	background-color: #6B3FA0;
+	top: 201px;
+	right: 326px;
+}
+
+#redViolet {
+	color: #FFF;
+	background-color: #BB3385;
+	top: 241px;
+	right: 317px;
+}
+
+#carnationPink {
+	color: #FFF;
+	background-color: #FFA6C9;
+	top: 240px;
+	right: 414px;
+}
+
+#brown {
+	color: #FFF;
+	background-color: #AF593E;
+	top: 198px;
+	right: 432px;
+}
+
+#black {
+	color: #FFF;
+	background-color: #000;
+	top: 152px;
+	right: 434px;
+}
+
+#burgundy {
+	color: #FFF;
+	background-color: #800020;
+	top: 110px;
+	right: 424px;
+}
+
+/*////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////*/
+/*//////////////////////  NOTES/SOUNDS  ////////////////////////////////*/
 
 #cMajor {
 	position: absolute;
@@ -52,6 +145,9 @@
 	left: 50px;
 
 }
+
+
+
 
 #play {
 	position: absolute;
