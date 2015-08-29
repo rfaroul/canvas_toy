@@ -83,6 +83,8 @@ redraw(); //to update the canvas
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE MOVE EVENT (a javascript method) 
 //draw on the canvas when user is pressing down
+//GLOBAL VARIABLES mouseX and mouseY
+
 crayonMove = $('#coloringBook').mousemove(function(event) {
 	if(paint) {
 		addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
@@ -96,9 +98,9 @@ crayonMove = $('#coloringBook').mousemove(function(event) {
 //crayon is off the paper
 crayonOff = $('#coloringBook').mouseup(function(event) {
 	paint = false;
-	clickY.length = 0; //reset x coordinates
-	clickX.length = 0; //reset y coordinates
-
+	//COMMENT OUT AT 8:45 SAT
+	//clickY.length = 0; //reset x coordinates
+	//clickX.length = 0; //reset y coordinates
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -106,6 +108,9 @@ crayonOff = $('#coloringBook').mouseup(function(event) {
 //if the crayon goes off the paper
 crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 	paint = false;
+	//added 9:08AM SAT
+	clickY.length = 0;
+	clickX.length = 0;
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,7 +119,7 @@ crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-var paint;
+//var paint;
 
 var start_time;
 
@@ -132,28 +137,26 @@ $('#coloringBook').mouseup(end);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
 function redraw() {
-	//UNCOMMENT @ 8:19PM
+	//UNCOMMENT @ 9:15AM
 	//context.clearRect(0, 0, context.canvas.width, context.canvas.height); //clear the canvas
-	context.strokeStyle = currentColor;
 	context.lineJoin = "round";
 	context.lineWidth = 5;
 
 	console.log('redraw function called');
-	console.log('clickX array ', clickX);
-	console.log('clickY array ', clickY);
+	// console.log('clickX array ', clickX);
+	// console.log('clickY array ', clickY);
 
-		context.beginPath(); //doesn't work if it's on line 124. why?
 	for(var i=0; i < clickX.length; i++) {
+		context.beginPath(); //doesn't work if it's on line 124. why?
+		//MOVED FROM LINE 142
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
 			context.moveTo(clickX[i]-1, clickY[i]);
 		}
 		context.lineTo(clickX[i], clickY[i]);
-		context.closePath();
-		//UNCOMMENT @ 8:15
-		context.strokeStyle = clickColor[i];
-		
+		context.closePath();		
+		context.strokeStyle = currentColor;
 		context.stroke();	
 		}
 	}
@@ -261,9 +264,6 @@ $('#play').click( function(event){
 	}
 	
 var colorTime = []; //push array of [color, time] into here 
-
-//var song = [] //keys are colors, values are times
-
 
 	function end() {
 	    var end_time = new Date();
