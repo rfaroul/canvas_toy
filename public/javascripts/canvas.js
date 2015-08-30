@@ -1,43 +1,18 @@
-	var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
-	var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
-
-
+var canvas;
 var paint; //global variable to be used later. (boolean)
-var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
-var canvasHeight = 375;
-//set other canvas attributes in css 
-
-var curTool = "crayon";
-var crayonTextureImage = new Image();
-
-
-if(curTool == "crayon"){
-		context.globalAlpha = 0.4; // No IE support
-		context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-	}
-	context.globalAlpha = 1; // No IE support
-
-context.lineWidth = 10;
-
-context.lineJoin = context.lineCap = 'round';
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////  DRAW THE CANVAS  ////////////////
+//////////////////  PREPARE THE CANVAS  ////////////////
+var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
+var canvasHeight = 375; 
 
-//////////// vertical lines ////////////
-// for (var x = 0.5; x < 500; x += 10 ) {
-// 	context.moveTo(x, 0);
-// 	context.lineTo(x, 375);
-// };
-
-//////////// horizontal lines ////////////
-// for (var y = 0.5; y < 375; y += 10 ) {
-// 	context.moveTo(0, y);
-// 	context.lineTo( 500, y);
-// };
-
-// context.strokeStyle = '#fff';
-// context.stroke();
+var currentNote = cMajor;
+var curTool = "crayon";
+var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
+var crayonTextureImage = new Image();
+context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
+context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
+context.lineWidth = 10;
+context.lineJoin = context.lineCap = 'round';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
@@ -86,18 +61,9 @@ var black = "#000000";
 var burgundy = "#800020";
 
 var currentColor = colorBlue;
-var currentNote = cMajor;
 var clickColor = [];
 
-// if (currentColor = colorBlue) {
-// 	currentNote = cMajor;
-// }
-// else if (currentColor = black) {
-// 	currentNote = fMajor;
-// }
-// else if (currentColor = burgundy) {
-// 	currentNote = fSharpMajor;
-// }
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +100,6 @@ crayonOff = $('#coloringBook').mouseup(function(event) {
 	//clickY.length = 0; //reset x coordinates
 	//clickX.length = 0; //reset y coordinates
 	console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +107,8 @@ crayonOff = $('#coloringBook').mouseup(function(event) {
 //if the crayon goes off the paper
 crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 	paint = false;
-	//added 9:08AM SAT
+	//with 109+110 colors don't change
+
 	clickY.length = 0;
 	clickX.length = 0;
 	console.log('end of mouseleave function', currentColor, soundLength); 
@@ -154,7 +120,7 @@ crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-//var paint;
+var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
@@ -170,10 +136,7 @@ $('#coloringBook').mouseup(end);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
 function redraw() {
-	//UNCOMMENT @ 9:15AM
-	//context.clearRect(0, 0, context.canvas.width, context.canvas.height); //clear the canvas
 	context.lineJoin = "round";
-	context.lineWidth = 5;
 
 	console.log('redraw function called');
 	// console.log('clickX array ', clickX);
@@ -190,10 +153,13 @@ function redraw() {
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();		
 		context.strokeStyle = currentColor;
+		context.lineWidth = 5;
 		context.stroke();	
 		}
-		//soundLength is undefined here until mouseup
-	}
+		
+		context.globalAlpha = 0.2;
+		context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
@@ -304,11 +270,14 @@ var soundLength;
 			}
 	    */
 
-crayonTextureImage.onload = function() { resourceLoaded(); 
-	};
-	crayonTextureImage.src = "images/crayon-texture.png";
+$(document).ready(prepareCanvas);
 
+function prepareCanvas () {
+		crayonTextureImage.src = "/images/crayon-texture.png";
+		console.log(crayonTextureImage);
 
+	
+}
 
 
 
