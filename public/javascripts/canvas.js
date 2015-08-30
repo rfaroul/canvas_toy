@@ -7,14 +7,14 @@ var paint; //global variable to be used later. (boolean)
 //////////////////  PREPARE THE CANVAS  ////////////////
 var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
 var canvasHeight = 375; 
-var curTool = "crayon";
+// var curTool = "crayon";
 
-var crayonTextureImage = new Image();
-context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
+//var crayonTextureImage = new Image();
+//context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
 // context.lineWidth = 10;
 context.lineJoin = context.lineCap = 'round';
 
-var currentNote = cMajor;
+var currentNote;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
 $('#blue').click(function () { 
@@ -61,59 +61,63 @@ var colorBlue = "#4997D0";
 var black = "#000000";
 var burgundy = "#800020";
 
-var currentColor = colorBlue;
+var currentColor = '#FFFFFF';
 var clickColor = [];
 
-
+var outlineImage = new Image();
+var drawingAreaX = 111;
+var drawingAreaY = 11;
+var drawingAreaWidth = 267;
+var drawingAreaHeight = 200;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE DOWN EVENT (a javascript method) 
 //when user clicks on canvas, record the position in an array via addClick function
-crayonOn = $('#coloringBook').mousedown(function (event) {
-var mouseX = event.pageX - this.offsetLeft; //event.pageX property returns position of the mouse pointer, relative to the left edge of the document.
-var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
-paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
-	//if paint = true, record the value
-addClick(mouseX, mouseY);
-//UNCOMMENT FRIDAY 9:30AM
-redraw(); //to update the canvas
-});
+	crayonOn = $('#coloringBook').mousedown(function (event) {
+	var mouseX = event.pageX - this.offsetLeft; //event.pageX property returns position of the mouse pointer, relative to the left edge of the document.
+	var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
+	paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
+		//if paint = true, record the value
+	addClick(mouseX, mouseY);
+	//UNCOMMENT FRIDAY 9:30AM
+	redraw(); //to update the canvas
+	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE MOVE EVENT (a javascript method) 
 //draw on the canvas when user is pressing down
 //GLOBAL VARIABLES mouseX and mouseY
 
-crayonMove = $('#coloringBook').mousemove(function(event) {
-	if(paint) {
-		addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
-		redraw();
-	}
-});
+	crayonMove = $('#coloringBook').mousemove(function(event) {
+		if(paint) {
+			addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
+			redraw();
+		}
+	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE UP EVENT (a javascript method) 
 //crayon is off the paper
-crayonOff = $('#coloringBook').mouseup(function(event) {
-	paint = false;
-	//COMMENT OUT AT 8:45 SAT
-	//clickY.length = 0; //reset x coordinates
-	//clickX.length = 0; //reset y coordinates
-	console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-});
+	crayonOff = $('#coloringBook').mouseup(function(event) {
+		paint = false;
+		//COMMENT OUT AT 8:45 SAT
+		//clickY.length = 0; //reset x coordinates
+		//clickX.length = 0; //reset y coordinates
+		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
+	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE LEAVE EVENT (a javascript method) 
 //if the crayon goes off the paper
-crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
-	paint = false;
-	//with 109+110 colors don't change
+	crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
+		paint = false;
+		//with 109+110 colors don't change
 
-	clickY.length = 0;
-	clickX.length = 0;
-	console.log('end of mouseleave function', currentColor, soundLength); 
-});
+		clickY.length = 0;
+		clickX.length = 0;
+		console.log('end of mouseleave function', currentColor, soundLength); 
+	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// ADDCLICK FUNCTION (saves the click position) 
@@ -140,8 +144,6 @@ function redraw() {
 	context.lineJoin = "round";
 
 	console.log('redraw function called');
-	// console.log('clickX array ', clickX);
-	// console.log('clickY array ', clickY);
 
 	for(var i=0; i < clickX.length; i++) {
 		context.beginPath(); //doesn't work if it's on line 124. why?
@@ -157,10 +159,15 @@ function redraw() {
 		context.lineWidth = 5;
 		context.stroke();	
 		}
-		
-		context.globalAlpha = 0.4;
-		context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-}
+
+		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+		//outlineImage = image to color
+		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
+		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
+		//drawingAreaWidth = the width to draw the image in the destination  canvas
+		//drawingAreaHeight = the height to draw the image in the destination canvas
+
+	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
@@ -247,12 +254,15 @@ var soundLength;
 
 $(document).ready(prepareCanvas);
 
-function prepareCanvas () {
-		crayonTextureImage.src = "/images/crayon-texture.png";
-		console.log(crayonTextureImage);
+function prepareCanvas () { 
+	outlineImage.src = "images/watermelon-duck-outline.png";
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+};
 
-	
-}
+outlineImage.onload = function () {
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+ }
+
 
 
 
