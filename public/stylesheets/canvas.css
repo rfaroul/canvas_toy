@@ -12,6 +12,7 @@
 }
 
 .crayon {
+	color: #fff;
 	position: absolute;
 	font-weight: bold;
 	right: 255px;
@@ -22,13 +23,16 @@
 /*//////////////////////  COLORS  ////////////////////////////////*/
 
 #blue {
+	position: absolute;
 	color: #FFF;
 	background-color: #4997D0;
-	top: 116px;
-	right: 328px;
+	height: 20px;
+	width: 49px;
+	top: 200px;
+	right: 447px;
 }
 
-#red {
+/*#red {
 	color: #FFF;
 	background-color: #ED0A3F;
 	top: 157px;
@@ -117,7 +121,7 @@
 	top: 198px;
 	right: 432px;
 }
-
+*/
 #black {
 	color: #FFF;
 	background-color: #000;
@@ -136,7 +140,7 @@
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  NOTES/SOUNDS  ////////////////////////////////*/
 
-#cMajor {
+/*#cMajor {
 	position: absolute;
 	color: #4997D0;
 	height: 20px;
@@ -144,7 +148,7 @@
 	top: 200px;
 	left: 50px;
 
-}
+}*/
 
 
 

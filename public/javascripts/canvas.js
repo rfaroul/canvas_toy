@@ -7,11 +7,22 @@ var canvasWidth = 500; //have to set canvas width and height here to clear the c
 var canvasHeight = 375;
 //set other canvas attributes in css 
 
+var curTool = "crayon";
+var crayonTextureImage = new Image();
+
+
+if(curTool == "crayon"){
+		context.globalAlpha = 0.4; // No IE support
+		context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
+	}
+	context.globalAlpha = 1; // No IE support
+
 context.lineWidth = 10;
+
 context.lineJoin = context.lineCap = 'round';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// DRAW THE CANVAS  ////////////////
+//////////////////  DRAW THE CANVAS  ////////////////
 
 //////////// vertical lines ////////////
 // for (var x = 0.5; x < 500; x += 10 ) {
@@ -30,42 +41,64 @@ context.lineJoin = context.lineCap = 'round';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
-$('#blue').click(function () { currentColor = colorBlue; });
-$('#red').click( function () { currentColor = red; });
-$('#rawSienna').click(function () { currentColor = rawSienna; });
-$('#orange').click(function () { currentColor = orange; });
-$('#vividTangerine').click(function () { currentColor = vividTangerine; });
-$('#yellow').click(function () { currentColor = yellow; });
-$('#yellowGreen').click(function () { currentColor = yellowGreen; });
-$('#green').click(function () { currentColor = green; });
-$('#blueGreen').click(function () { currentColor = blueGreen; });
-$('#blueViolet').click(function () { currentColor = blueViolet; });
-$('#purple').click(function () { currentColor = purple; });
-$('#redViolet').click(function () { currentColor = redViolet; });
-$('#carnationPink').click(function () { currentColor = carnationPink; });
-$('#brown').click(function () { currentColor = brown; });
-$('#black').click(function () { currentColor = black; });
-$('#burgundy').click(function () { currentColor = burgundy; });
+$('#blue').click(function () { 
+	currentColor = colorBlue;
+	currentNote = cMajor;
+	 });
+//$('#red').click( function () { currentColor = red; });
+// $('#rawSienna').click(function () { currentColor = rawSienna; });
+// $('#orange').click(function () { currentColor = orange; });
+// $('#vividTangerine').click(function () { currentColor = vividTangerine; });
+// $('#yellow').click(function () { currentColor = yellow; });
+// $('#yellowGreen').click(function () { currentColor = yellowGreen; });
+// $('#green').click(function () { currentColor = green; });
+// $('#blueGreen').click(function () { currentColor = blueGreen; });
+// $('#blueViolet').click(function () { currentColor = blueViolet; });
+// $('#purple').click(function () { currentColor = purple; });
+// $('#redViolet').click(function () { currentColor = redViolet; });
+// $('#carnationPink').click(function () { currentColor = carnationPink; });
+// $('#brown').click(function () { currentColor = brown; });
+$('#black').click(function () { 
+	currentColor = black; 
+	currentNote = fMajor;
+});
+
+$('#burgundy').click(function () { 
+	currentColor = burgundy; 
+	currentNote = fSharpMajor;
+});
 
 var colorBlue = "#4997D0";
-var red = "#ED0A3F";
-var rawSienna = "#D27D46";
-var orange = "#FF8833";
-var vividTangerine = "#FF9980";
-var yellow = "#FBE870";
-var yellowGreen = "#C5E17A";
-var green = "#3AA655";
-var blueGreen = "#0095B7";
-var blueViolet = "#6456B7";
-var purple = "#6B3FA0";
-var redViolet = "#BB3385";
-var carnationPink = "#FFA6C9";
-var brown = "#AF593E";
+// var red = "#ED0A3F";
+// var rawSienna = "#D27D46";
+// var orange = "#FF8833";
+// var vividTangerine = "#FF9980";
+// var yellow = "#FBE870";
+// var yellowGreen = "#C5E17A";
+// var green = "#3AA655";
+// var blueGreen = "#0095B7";
+// var blueViolet = "#6456B7";
+// var purple = "#6B3FA0";
+// var redViolet = "#BB3385";
+// var carnationPink = "#FFA6C9";
+// var brown = "#AF593E";
 var black = "#000000";
 var burgundy = "#800020";
 
 var currentColor = colorBlue;
+var currentNote = cMajor;
 var clickColor = [];
+
+// if (currentColor = colorBlue) {
+// 	currentNote = cMajor;
+// }
+// else if (currentColor = black) {
+// 	currentNote = fMajor;
+// }
+// else if (currentColor = burgundy) {
+// 	currentNote = fSharpMajor;
+// }
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE DOWN EVENT (a javascript method) 
@@ -92,7 +125,6 @@ crayonMove = $('#coloringBook').mousemove(function(event) {
 	}
 });
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE UP EVENT (a javascript method) 
 //crayon is off the paper
@@ -101,6 +133,8 @@ crayonOff = $('#coloringBook').mouseup(function(event) {
 	//COMMENT OUT AT 8:45 SAT
 	//clickY.length = 0; //reset x coordinates
 	//clickX.length = 0; //reset y coordinates
+	console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
+
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +145,7 @@ crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 	//added 9:08AM SAT
 	clickY.length = 0;
 	clickX.length = 0;
+	console.log('end of mouseleave function', currentColor, soundLength); 
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,8 +155,6 @@ var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
 //var paint;
-
-var start_time;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
@@ -159,6 +192,7 @@ function redraw() {
 		context.strokeStyle = currentColor;
 		context.stroke();	
 		}
+		//soundLength is undefined here until mouseup
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,62 +207,44 @@ $('#eraseCanvas').click(clearCanvas);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
 
-var note = {
-	chord: cMajor,
-	soundLength: 12000
-};
+//SAVE  PLAY CLICK EVENT FUNCTION
+// var note = {
+// chord: cMajor,
+// 	soundLength: 12000
+// };
 
-var note2 = {
-	chord: fMajor,
-	soundLength: 500
-};
+// var note2 = {
+// 	chord: fMajor,
+// 	soundLength: 500
+// };
 
-var note3 = {
-	chord: fSharpMajor,
-	soundLength: 1000
-};
+// var note3 = {
+// 	chord: fSharpMajor,
+// 	soundLength: 1000
+// };
 
-var song = [];
-song.push(note, note2, note3);
-console.log("notes", song); //array of 3 items
+// song.push(note, note2, note3);
+//console.log("notes", song); //array of 3 items
+//SAVE  PLAY CLICK EVENT FUNCTION
+
+
+
+
+
 
 console.log("before the click event");
-
-
-//exercise 
-// var doThing = function(valueInFunction){
-
-// 	//"valueInFunction" is a new value 
-// 	console.log( "calling set timeout with: "+valueInFunction);
-// 	setTimeout(function(){
-// 		console.log("timeout, thing that happens later", valueInFunction )
-// 	}, 1000)
-	
-// }
-
-
-// for( var oldValue=0; oldValue<9; oldValue++){
-// 	doThing(oldValue);
-// 	console.log( "loop",oldValue);
-// }
-
-
-
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
 function playAudio ( userSong ) {
-	//if (song.length != 0) { 
 	console.log("inside click event callback");
 	console.log( event ); 
-		// if (song.length >= 1) {
+	if (song.length = 0) {
 		console.log("about to play");
-		console.log(note, note2, note3);
-		//song.push(note, note2, note3);
+		console.log(currentColor, soundLength); //both global variables 
+	    //soundLength defined
 		console.log("song array", userSong); 
-		currentNote = userSong.pop(); //playing one note over and over. WTF.
-		console.log("popped", userSong); //song is a click event, not a function
+		currentNote = userSong.pop(); 
+		console.log("popped", userSong);
 		console.log( currentNote.chord, currentNote.soundLength);
 
 		currentNote.chord.play();
@@ -241,10 +257,10 @@ function playAudio ( userSong ) {
 			playAudio(userSong);
 			console.log("what song are you playing?", userSong)
 		}, currentNote.soundLength );
-	//}
-	// else {
-	// 	console.log("you're done!")
-	// 	};
+	}
+	else {
+		console.log("you're done!")
+	};
 		//how to get it to stop
 		// restart Audio when finished playing for specified length of time
 };
@@ -253,64 +269,47 @@ $('#play').click( function(event){
 
 	playAudio( song );
 } );
-// playAudio(song);
 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// TIMER FUNCTIONS //////////////////
+var start_time;
 
-	function start() {
-    	start_time = new Date();
-    	// console.log('start time', start_time);
+var soundLength;
+
+	function start () {
+		start_time = new Date();
+		console.log('start', start_time);
 	}
-	
-var colorTime = []; //push array of [color, time] into here 
 
 	function end() {
-	    var end_time = new Date();
-	    // console.log('now', end_time);
+		 var end_time = new Date();
+	    console.log('end', end_time);
 	    soundLength = end_time-start_time;
-	    console.log(currentColor, soundLength);
+	    console.log(currentColor, soundLength); //both global variables 
+	    //soundLength defined
+	    console.log('currentNote', currentNote);
+	    song.push( { 'chord': currentNote, 'soundLength': soundLength });
+	    console.log('end function', song);
 	}
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
+	var song = [];
+	//song.push( { 'chord': currentNote, 'soundLength': soundLength });
+
+
+	    /*need soundLength and currentNote to create object
+			purple = gMajor
+			note = {
+				sound: currentNote (id of audio element),
+				length: 'length of time' (integer)
+			}
+	    */
+
+crayonTextureImage.onload = function() { resourceLoaded(); 
+	};
+	crayonTextureImage.src = "images/crayon-texture.png";
 
 
 
-
-
-
-//MEETING WITH AKIRA 5:30PM	
-//OPTION 1
-	//user clicks purple 
-	//user draws with the purple crayon
-	//purple = gMajor
-	// var song = []; //empty array
-	// song.push( { chord: gMajor, soundLength: 1000 })
-	// 				note: ______ , 	time: _______
-
-
-//OR OPTION2: 
-//COULD HAVE A "NOTE" OBJECT
-	// function Note (chord, time) {
-	// 	this.chord = c; 
-	// 	this.time = t;
-	// 	this.poop = function() {
-	// 		console.log(this.time);
-	// 	};
-	// }
-	// var note = new Note(gMajor, 1000);
-	// song.push(note); //push note object into the empty song array
-	// note.poop();
-	//difference with making a constructor is that you can add methods and do weird things with the objects
-
-
-//////// TO MAKE THIS MORE READABLE AND ACCESSIBLE
-// var redraw = require('redraw');
-// module.exports = function redraw() {
-
-//snapshot of canvas to save
-//change button values to notes/chords
 
 
 
