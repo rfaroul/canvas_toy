@@ -1,19 +1,20 @@
-var canvas;
+var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
+context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
+
 var paint; //global variable to be used later. (boolean)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////  PREPARE THE CANVAS  ////////////////
 var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
 var canvasHeight = 375; 
-
-var currentNote = cMajor;
 var curTool = "crayon";
-var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
+
 var crayonTextureImage = new Image();
-context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
 context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-context.lineWidth = 10;
+// context.lineWidth = 10;
 context.lineJoin = context.lineCap = 'round';
 
+var currentNote = cMajor;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
 $('#blue').click(function () { 
@@ -157,7 +158,7 @@ function redraw() {
 		context.stroke();	
 		}
 		
-		context.globalAlpha = 0.2;
+		context.globalAlpha = 0.4;
 		context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
 }
 
@@ -173,38 +174,12 @@ $('#eraseCanvas').click(clearCanvas);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
 
-//SAVE  PLAY CLICK EVENT FUNCTION
-// var note = {
-// chord: cMajor,
-// 	soundLength: 12000
-// };
-
-// var note2 = {
-// 	chord: fMajor,
-// 	soundLength: 500
-// };
-
-// var note3 = {
-// 	chord: fSharpMajor,
-// 	soundLength: 1000
-// };
-
-// song.push(note, note2, note3);
-//console.log("notes", song); //array of 3 items
-//SAVE  PLAY CLICK EVENT FUNCTION
-
-
-
-
-
-
 console.log("before the click event");
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
+
 function playAudio ( userSong ) {
 	console.log("inside click event callback");
 	console.log( event ); 
-	if (song.length = 0) {
+	if (song.length > 0) {
 		console.log("about to play");
 		console.log(currentColor, soundLength); //both global variables 
 	    //soundLength defined
