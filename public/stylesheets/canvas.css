@@ -22,116 +22,116 @@
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  COLORS  ////////////////////////////////*/
 
-#blue {
+#color1 {
 	position: absolute;
 	color: #FFF;
-	background-color: #4997D0;
+	background-color: #FFFB40;
 	height: 20px;
 	width: 49px;
 	top: 200px;
 	right: 447px;
 }
 
-/*#red {
+#color2 {
 	color: #FFF;
-	background-color: #ED0A3F;
+	background-color: #744FE8;
 	top: 157px;
 	right: 236px;
 }
 
-#rawSienna {
+#color3 {
 	color: #FFF;
-	background-color: #D27D46;
+	background-color: #FF4CAD;
 	top: 201px;
 	right: 217px;
 }
 
-#orange {
+#color4 {
 	color: #FFF;
-	background-color: #FF8833;
-	top: 573px;
+	background-color: #E82B2D;
+	top: 329px;
 	right: 318px;
 }
 
-#vividTangerine {
+#color5 {
 	color: #FFF;
-	background-color: #FF9980;
+	background-color: #FFCFB4; 
 	top: 285px;
 	right: 198px;
 }
-#yellow {
+#color6 {
 	color: #FFF;
-	background-color: #FBE870;
+	background-color: #966643; 
 	top: 284px;
 	right: 325px;
 }
 
-#yellowGreen {
+#color7 {
 	color: #FFF;
-	background-color: #C5E17A;
+	background-color: #999999; 
 	top: 285px;
 	right: 417px;
 }
 
-#green {
+#color8 {
 	color: #FFF;
-	background-color: #3AA655;
+	background-color: #E8A22B; 
 	top: 115px;
 	right: 229px;
 }
 
-#blueGreen {
+#color9 {
 	color: #FFF;
-	background-color: #0095B7;
+	background-color: #FF806E; 
 	top: 156px;
 	right: 313px;
 }
 
-#blueViolet {
+#color10 {
 	color: #FFF;
-	background-color: #6456B7;
+	background-color: #323AE8; 
 	top: 241px;
 	right: 220px;
 }
 
-#purple {
+#color11 {
 	color: #FFF;
-	background-color: #6B3FA0;
+	background-color: #89FF9B; 
 	top: 201px;
 	right: 326px;
 }
 
-#redViolet {
+#color12 {
 	color: #FFF;
-	background-color: #BB3385;
+	background-color: #892F9B; 
 	top: 241px;
 	right: 317px;
 }
 
-#carnationPink {
+#color13 {
 	color: #FFF;
-	background-color: #FFA6C9;
+	background-color: #C384B1; 
 	top: 240px;
 	right: 414px;
 }
 
-#brown {
+#color14 {
 	color: #FFF;
-	background-color: #AF593E;
-	top: 198px;
-	right: 432px;
+	background-color: #FB7FFF; 
+	top: 71px;
+	right: 308px;
 }
-*/
-#black {
+
+#color15 {
 	color: #FFF;
-	background-color: #000;
+	background-color: #34A76C; 
 	top: 152px;
 	right: 434px;
 }
 
-#burgundy {
+#color16 {
 	color: #FFF;
-	background-color: #800020;
+	background-color: #CD4A4C; 
 	top: 110px;
 	right: 424px;
 }

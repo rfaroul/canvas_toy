@@ -17,49 +17,39 @@ context.lineJoin = context.lineCap = 'round';
 var currentNote;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
-$('#blue').click(function () { 
-	currentColor = colorBlue;
-	currentNote = cMajor;
-	 });
-//$('#red').click( function () { currentColor = red; });
-// $('#rawSienna').click(function () { currentColor = rawSienna; });
-// $('#orange').click(function () { currentColor = orange; });
-// $('#vividTangerine').click(function () { currentColor = vividTangerine; });
-// $('#yellow').click(function () { currentColor = yellow; });
-// $('#yellowGreen').click(function () { currentColor = yellowGreen; });
-// $('#green').click(function () { currentColor = green; });
-// $('#blueGreen').click(function () { currentColor = blueGreen; });
-// $('#blueViolet').click(function () { currentColor = blueViolet; });
-// $('#purple').click(function () { currentColor = purple; });
-// $('#redViolet').click(function () { currentColor = redViolet; });
-// $('#carnationPink').click(function () { currentColor = carnationPink; });
-// $('#brown').click(function () { currentColor = brown; });
-$('#black').click(function () { 
-	currentColor = black; 
-	currentNote = fMajor;
-});
+$('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
+$('#color2').click( function () { currentColor = color2; currentNote = aNote });
+$('#color3').click(function () { currentColor = color3; currentNote = bFlat });
+$('#color4').click(function () { currentColor = color4; currentNote = bNote });
+$('#color5').click(function () { currentColor = color5; currentNote = cNote });
+$('#color6').click(function () { currentColor = color6; currentNote = cSharp });
+$('#color7').click(function () { currentColor = color7; currentNote = dNote });
+$('#color8').click(function () { currentColor = color8; currentNote = eFlat });
+$('#color9').click(function () { currentColor = color9; currentNote = eNote });
+$('#color10').click(function () { currentColor = color10; currentNote = fNote });
+$('#color11').click(function () { currentColor = color11; currentNote = fSharp });
+$('#color12').click(function () { currentColor = color12; currentNote = gNote });
+$('#color13').click(function () { currentColor = color13; currentNote = lowerC});
+$('#color14').click(function () { currentColor = color14; currentNote = lowerE });
+$('#color15').click(function () { currentColor = color15; currentNote = lowerG });
+$('#color16').click(function () { currentColor = color16; currentNote = upperC });
 
-$('#burgundy').click(function () { 
-	currentColor = burgundy; 
-	currentNote = fSharpMajor;
-});
-
-var colorBlue = "#4997D0";
-// var red = "#ED0A3F";
-// var rawSienna = "#D27D46";
-// var orange = "#FF8833";
-// var vividTangerine = "#FF9980";
-// var yellow = "#FBE870";
-// var yellowGreen = "#C5E17A";
-// var green = "#3AA655";
-// var blueGreen = "#0095B7";
-// var blueViolet = "#6456B7";
-// var purple = "#6B3FA0";
-// var redViolet = "#BB3385";
-// var carnationPink = "#FFA6C9";
-// var brown = "#AF593E";
-var black = "#000000";
-var burgundy = "#800020";
+var color1 = "#5B88FF";
+var color2 = "#ED0A3F";
+var color3 = "#D27D46";
+var color4 = "#FF8833";
+var color5 = "#FF9980";
+var color6 = "#FBE870";
+var color7 = "#C5E17A";
+var color8 = "#3AA655";
+var color9 = "#0095B7";
+var color10 = "#6456B7";
+var color11 = "#6B3FA0";
+var color12 = "#BB3385";
+var color13 = "#FFA6C9";
+var color14 = "#AF593E";
+var color15 = "#000000";
+var color16 = "#800020";
 
 var currentColor = '#FFFFFF';
 var clickColor = [];
