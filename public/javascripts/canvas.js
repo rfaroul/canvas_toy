@@ -44,14 +44,14 @@ var color5 = "#FFCFB4";
 var color6 = "#966643";
 var color7 = "#999999";
 var color8 = "#E8A22B";
-var color9 = "#0095B7";
-var color10 = "#6456B7";
-var color11 = "#6B3FA0";
-var color12 = "#BB3385";
-var color13 = "#FFA6C9";
-var color14 = "#AF593E";
-var color15 = "#000000";
-var color16 = "#800020";
+var color9 = "#FF806E";
+var color10 = "#323AE8";
+var color11 = "#89FF9B";
+var color12 = "#892F9B";
+var color13 = "#C384B1";
+var color14 = "#FB7FFF";
+var color15 = "#34A76C";
+var color16 = "#CD4A4C";
 
 var currentColor = '#FFFFFF';
 var clickColor = [];
@@ -174,35 +174,19 @@ $('#eraseCanvas').click(clearCanvas);
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
 //save image as data url (png format by default)
-var dataURL = canvas.toDataURL();
+var link = document.createElement('a');
+link.innerHTML = 'download image';
+link.addEventListener('click', function(ev) {
+    link.href = canvas.toDataURL();
+    link.download = "mypainting.png";
+}, false);
+document.body.appendChild(link);
+// $('image_download').src = dataURL;
+// var dataURL = canvas.toDataURL();
 
 //set download link src to dataURL to save it as image
-$('image_download').src = dataURL;
-
-var link = $('.image_download');
-link.addEventListener('click', function(event) {
-	link.href = canvas.toDataURL();
-	link.download = 'mypainting.png';
-}, false);
 
 
-function save(){
-alert(JSON.stringify(jsondata));
-filename = document.getElementById("text").value;
-if (filename==""){
-alert("Enter filename:");
-}
-else{
-$.post("/",{'name':filename,'data':JSON.stringify(jsondata)},function(data,status){alert("saved")});
-}
-}
-
-//OR
-  var dataURL = canvas.toDataURL();
-
-      // set canvasImg image src to dataURL
-      // so it can be saved as an image
-      document.getElementById('canvasImg').src = dataURL;
 // To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
 
 // Note: The toDataURL() method requires that any images drawn onto the canvas are hosted on a web server with the same domain as the code executing it.  If this condition is not met, a SECURITY_ERR exception is thrown.
