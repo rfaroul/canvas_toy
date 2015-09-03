@@ -18,13 +18,6 @@ app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
 app.use(logger('dev'));
 
-fs.readdirSync('./controllers').forEach(function (file) {
-	if(file.substr(-3) == '.js') {
-		route = require('./controllers/' + file);
-		console.log('this is the route', route);
-		route.controller(app);
-	}
-});
 
 //ROOT ROUTE
 app.get('/', function(req, res) {

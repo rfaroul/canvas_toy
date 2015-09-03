@@ -72,7 +72,6 @@ var drawingAreaHeight = 200;
 	paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
 		//if paint = true, record the value
 	addClick(mouseX, mouseY);
-	//UNCOMMENT FRIDAY 9:30AM
 	redraw(); //to update the canvas
 	});
 
@@ -93,9 +92,9 @@ var drawingAreaHeight = 200;
 //crayon is off the paper
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
-		//COMMENT OUT AT 8:45 SAT
-		//clickY.length = 0; //reset x coordinates
-		//clickX.length = 0; //reset y coordinates
+		//COMMENT OUT AT 9:09 THURSDAY
+		clickY.length = 0; //reset x coordinates
+		clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
 	});
 
@@ -181,11 +180,6 @@ link.addEventListener('click', function(ev) {
     link.download = "mypainting.png";
 }, false);
 document.body.appendChild(link);
-// $('image_download').src = dataURL;
-// var dataURL = canvas.toDataURL();
-
-//set download link src to dataURL to save it as image
-
 
 // To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
 
