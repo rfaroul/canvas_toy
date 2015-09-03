@@ -1,12 +1,12 @@
 var express = require('express'),
-var fs = require('fs'), //reads controllers and models files
-var request = require('request'), //simple way to make HTTP calls
-var app = express(),
-var exphbs = require('express-handlebars'),
-var logger = require('morgan'),
-var path = require('path'),
-var bodyParser = require('body-parser'); //parses JSON objects
-var root = __dirname;
+fs = require('fs'), //reads controllers and models files
+request = require('request'), //simple way to make HTTP calls
+app = express(),
+exphbs = require('express-handlebars'),
+logger = require('morgan'),
+path = require('path'),
+bodyParser = require('body-parser'); //parses JSON objects
+root = __dirname;
 
 app.listen(3000);
 

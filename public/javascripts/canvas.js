@@ -173,9 +173,22 @@ $('#eraseCanvas').click(clearCanvas);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
+//save image as data url (png format by default)
+var dataURL = canvas.toDataURL();
+
+//set download link src to dataURL to save it as image
+$('image_download').src = dataURL;
+
+var link = $('.image_download');
+link.addEventListener('click', function(event) {
+	link.href = canvas.toDataURL();
+	link.download = 'mypainting.png';
+}, false);
+
+
 function save(){
 alert(JSON.stringify(jsondata));
-filename=document.getElementById("text").value;
+filename = document.getElementById("text").value;
 if (filename==""){
 alert("Enter filename:");
 }
@@ -184,6 +197,15 @@ $.post("/",{'name':filename,'data':JSON.stringify(jsondata)},function(data,statu
 }
 }
 
+//OR
+  var dataURL = canvas.toDataURL();
+
+      // set canvasImg image src to dataURL
+      // so it can be saved as an image
+      document.getElementById('canvasImg').src = dataURL;
+// To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
+
+// Note: The toDataURL() method requires that any images drawn onto the canvas are hosted on a web server with the same domain as the code executing it.  If this condition is not met, a SECURITY_ERR exception is thrown.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
 
