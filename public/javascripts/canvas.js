@@ -18,6 +18,8 @@ var currentNote;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
 $('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
+	//add sound to click event.
+	//option to play sound for each color while coloring
 $('#color2').click( function () { currentColor = color2; currentNote = aNote });
 $('#color3').click(function () { currentColor = color3; currentNote = bFlat });
 $('#color4').click(function () { currentColor = color4; currentNote = bNote });
@@ -34,14 +36,14 @@ $('#color14').click(function () { currentColor = color14; currentNote = lowerE }
 $('#color15').click(function () { currentColor = color15; currentNote = lowerG });
 $('#color16').click(function () { currentColor = color16; currentNote = upperC });
 
-var color1 = "#5B88FF";
-var color2 = "#ED0A3F";
-var color3 = "#D27D46";
-var color4 = "#FF8833";
-var color5 = "#FF9980";
-var color6 = "#FBE870";
-var color7 = "#C5E17A";
-var color8 = "#3AA655";
+var color1 = "#FFFB40";
+var color2 = "#744FE8";
+var color3 = "#FF4CAD";
+var color4 = "#E82B2D";
+var color5 = "#FFCFB4";
+var color6 = "#966643";
+var color7 = "#999999";
+var color8 = "#E8A22B";
 var color9 = "#0095B7";
 var color10 = "#6456B7";
 var color11 = "#6B3FA0";
@@ -167,6 +169,20 @@ function clearCanvas() {
 };
 
 $('#eraseCanvas').click(clearCanvas);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
+//want to save the canvas state 
+function save(){
+alert(JSON.stringify(jsondata));
+filename=document.getElementById("text").value;
+if (filename==""){
+alert("Enter filename:");
+}
+else{
+$.post("/",{'name':filename,'data':JSON.stringify(jsondata)},function(data,status){alert("saved")});
+}
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
