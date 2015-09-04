@@ -1,9 +1,10 @@
 .coloringBook {
-	position: relative;
-	border-color: #FFFDAD;
+	position: absolute;
+	border-color: #1F2B52;
 	border-style: solid;
-	margin: 600px auto 0px 100px;
+	margin: 100px auto 0px 10px;
 	background-color: #FFF;
+	bottom: 5px;
 }
 
 #eraseCanvas {
@@ -14,11 +15,17 @@
 }
 
 .crayon {
-	color: #fff;
 	position: absolute;
 	font-weight: bold;
-	right: 255px;
+	position: absolute;
+	color: #000;
+	background-color: #FFFB40;
+	border-radius: 10px;
+	height: 20px;
+	width: 51px;
+	text-align: center;
 }
+
 
 .save {
 	position: relative;
@@ -30,114 +37,96 @@
 /*//////////////////////  COLORS  ////////////////////////////////*/
 
 #color1 {
-	position: absolute;
-	color: #FFF;
 	background-color: #FFFB40;
-	height: 20px;
-	width: 49px;
-	top: 200px;
-	right: 447px;
+	top: 256px;
+	left: 538px;
+	text-align: center;
 }
 
 #color2 {
-	color: #FFF;
 	background-color: #744FE8;
-	top: 157px;
-	right: 236px;
+	top: 219px;
+	left: 578px;
 }
 
 #color3 {
-	color: #FFF;
 	background-color: #FF4CAD;
-	top: 201px;
-	right: 217px;
+	top: 182px;
+	left: 618px;
 }
 
 #color4 {
-	color: #FFF;
 	background-color: #E82B2D;
-	top: 329px;
-	right: 318px;
+	top: 145px;
+	left: 658px;
 }
 
 #color5 {
-	color: #FFF;
 	background-color: #FFCFB4; 
-	top: 285px;
-	right: 198px;
+	top: 145px;
+	right: 436px;
 }
 #color6 {
-	color: #FFF;
 	background-color: #966643; 
-	top: 284px;
-	right: 325px;
+	top: 182px;
+	right: 396px;
 }
 
 #color7 {
-	color: #FFF;
 	background-color: #999999; 
-	top: 285px;
-	right: 417px;
+	top: 219px;
+	right: 356px;
 }
 
 #color8 {
-	color: #FFF;
 	background-color: #E8A22B; 
-	top: 115px;
-	right: 229px;
+	top: 256px;
+	right: 316px;
 }
 
 #color9 {
-	color: #FFF;
 	background-color: #FF806E; 
 	top: 156px;
 	right: 313px;
 }
 
 #color10 {
-	color: #FFF;
 	background-color: #323AE8; 
 	top: 241px;
 	right: 220px;
 }
 
 #color11 {
-	color: #FFF;
 	background-color: #89FF9B; 
 	top: 201px;
 	right: 326px;
 }
 
 #color12 {
-	color: #FFF;
 	background-color: #892F9B; 
 	top: 241px;
 	right: 317px;
 }
 
 #color13 {
-	color: #FFF;
 	background-color: #C384B1; 
 	top: 240px;
 	right: 414px;
 }
 
 #color14 {
-	color: #FFF;
 	background-color: #FB7FFF; 
 	top: 71px;
 	right: 308px;
 }
 
 #color15 {
-	color: #FFF;
 	background-color: #34A76C; 
 	top: 152px;
 	right: 434px;
 }
 
 #color16 {
-	color: #FFF;
 	background-color: #CD4A4C; 
 	top: 110px;
 	right: 424px;

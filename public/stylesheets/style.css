@@ -1,15 +1,17 @@
 html,body
 {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-    overflow-y: auto;
-    /*background-color: #DADDE0;*/
-    background-color: #DADDE0;
-    z-index: -1;
-    /*background-image: url('/images/bw_music_notes_arc.png');*/
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  /*background-color: #DADDE0;
+*/background-image: url('/images/Blue-Music-notes.jpg');
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  z-index: -1;
 }
 
 .container {
@@ -35,24 +37,13 @@ header {
   width: 100%;
   font-family: "Ubuntu", sans-serif;
   text-align: center;
-  background-color: #36CCB2;
-  color: #1F2B52;
+  background-color: rgba(31, 43, 82, 0.5);
+  color: #36CCB2;
   font-size: 500%;
   font-weight: 400;
   margin: 0px auto 0px auto;
   z-index: 1;
   */  
- }
-
-section {
-  position: relative;
-  display: block;
-  height: 204px;
-  width: 300px;
-  border: 3px outset #1F2B52;
-  background-color: #FFFDAD;
-  margin: 5px 5px 5px 0px;
-  float: right;
  }
 
 .definition {
@@ -61,47 +52,44 @@ section {
   display: block;
   height: 204px;
   width: 300px;
-  border: 3px outset #1F2B52;
-  background-color: #FFFDAD;
-  margin: 5px 5px 5px 0px;
+  /*border: 3px outset #1F2B52;
+  background-color: #FFFDAD;*/
+  margin: 5px;
   float: right;
-}
-
-.definition p {
+  text-align: center;
   font-family: "Ubuntu", sans-serif;
-  font-size: 19px;
-  margin: 10px 5px 0px 10px;
-
 }
 
-section:last-child {
+.box {
   position: relative;
-  display: block;
-  height: 504px;
-  width: 300px;
   border: 3px outset #1F2B52;
-  background-color: #FFFDAD;
-  margin: 5px 5px 5px 0px;
-  /*float: none;*/
-}
-
+  background-color: rgba(255, 95, 101, 0.7);
+  display: block;
+  /*float: right;
+*/}
 
 .directions {
   position: relative;
   padding: 0px;
-  margin: 10px 5px 0px 10px;
-  top: 300px;
-}
-
-.directions h1 {
+  display: block;
+  height: 317px;
+  width: 300px;
+  border: 3px outset #1F2B52;
+  background-color: #DADDE0;
+  margin: 5px;
+  top: 218px;
+  left: 316px;
+  /*float: right;*/
+  text-align: center;
   font-family: "Ubuntu", sans-serif;
-  font-size: 20px;
+  float: right;
+
 }
 
 .directions p {
   font-family: "Ubuntu", sans-serif;
   font-size: 15px;
-}
+}*/
 
 
 
