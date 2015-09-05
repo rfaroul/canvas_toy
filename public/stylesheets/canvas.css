@@ -1,10 +1,9 @@
-.coloringBook {
+#coloringBook {
 	position: absolute;
-	border-color: #1F2B52;
-	border-style: solid;
-	margin: 100px auto 0px 10px;
+	border: 2px solid #1F2B52;
+	margin: 100px auto 0px 5px;
 	background-color: #FFF;
-	bottom: 5px;
+	bottom: -421px;
 }
 
 #eraseCanvas {
@@ -31,6 +30,15 @@
 	position: relative;
 	top: 14px;
 	left: 114px;
+}
+
+img {
+	border: 1px black;
+	position: absolute;
+	top: 105px;
+	left: 182px;
+	height: 350px;
+	display: inline;
 }
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/

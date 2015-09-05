@@ -1,20 +1,18 @@
 var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
-context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
+var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
+// context.globalCompositeOperation = 'multiply';
 
-var paint; //global variable to be used later. (boolean)
+var paint; //(boolean)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////  PREPARE THE CANVAS  ////////////////
 var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
 var canvasHeight = 375; 
-// var curTool = "crayon";
-
-//var crayonTextureImage = new Image();
-//context.drawImage(crayonTextureImage, 0, 0, canvasWidth, canvasHeight);
-// context.lineWidth = 10;
 context.lineJoin = context.lineCap = 'round';
-
 var currentNote;
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
 $('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
@@ -57,10 +55,14 @@ var currentColor = '#FFFFFF';
 var clickColor = [];
 
 var outlineImage = new Image();
-var drawingAreaX = 111;
-var drawingAreaY = 11;
-var drawingAreaWidth = 267;
-var drawingAreaHeight = 200;
+// var drawingAreaX = 111;
+// var drawingAreaY = 11;
+// var drawingAreaWidth = 267;
+// var drawingAreaHeight = 200;
+var drawingAreaX;
+var drawingAreaY;
+var drawingAreaWidth;
+var drawingAreaHeight;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +98,7 @@ var drawingAreaHeight = 200;
 		clickY.length = 0; //reset x coordinates
 		clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
+		redraw();
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,13 +119,14 @@ var drawingAreaHeight = 200;
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-var paint;
+// var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
 	clickY.push(y);
 	clickDrag.push(dragging);
 	clickColor.push(currentColor); //record the chosen color when the user clicks
+	redraw();
 }
 
 $('#coloringBook').mousedown(start);
@@ -131,14 +135,26 @@ $('#coloringBook').mouseup(end);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
+var hasBeenClicked = false;
+
 function redraw() {
+	// //added friday 9:54pm
+	// clearCanvas();
+
 	context.lineJoin = "round";
 
 	console.log('redraw function called');
 
+	//added friday 9:39pm
+	context.save();
+	context.beginPath();
+	context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+	context.clip();
+
 	for(var i=0; i < clickX.length; i++) {
+		//added friday 9:39pm
+		 // context.save();
 		context.beginPath(); //doesn't work if it's on line 124. why?
-		//MOVED FROM LINE 142
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
@@ -147,11 +163,27 @@ function redraw() {
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();		
 		context.strokeStyle = currentColor;
-		context.lineWidth = 5;
-		context.stroke();	
+		context.lineWidth = 3;
+		context.stroke();
 		}
+		//added friday 9:39pm
+		context.restore();	
 
-		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+		//added friday 10:09pm
+		context.globalAlpha = 1;
+
+	$('#betty_boop').click( function () {
+
+		 var drawingAreaX = 150;
+		 var drawingAreaY = 11;
+		 var drawingAreaWidth = 175;
+		 var drawingAreaHeight = 350;
+		 outlineImage.src = "images/betty_boop.jpg";
+		 context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	});
+
+
+		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
 		//outlineImage = image to color
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
@@ -250,34 +282,24 @@ var soundLength;
 	}
 
 	var song = [];
-	//song.push( { 'chord': currentNote, 'soundLength': soundLength });
 
-
-	    /*need soundLength and currentNote to create object
-			purple = gMajor
-			note = {
-				sound: currentNote (id of audio element),
-				length: 'length of time' (integer)
-			}
-	    */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// ONLOAD FUNCTIONS //////////////////
 
 $(document).ready(prepareCanvas);
 
 function prepareCanvas () { 
-	outlineImage.src = "images/watermelon-duck-outline.png";
-	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-};
 
-outlineImage.onload = function () {
-	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
- }
+	$('#betty_boop').click( function () {
 
-
-
-
-
-
-
+		var drawingAreaX = 150;
+		var drawingAreaY = 11;
+		var drawingAreaWidth = 175;
+		var drawingAreaHeight = 350;
+		outlineImage.src = "images/betty_boop.jpg";
+		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	});
+}
 
 
 
