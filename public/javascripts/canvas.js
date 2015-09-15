@@ -71,9 +71,11 @@ var drawingAreaHeight;
 	crayonOn = $('#coloringBook').mousedown(function (event) {
 	var mouseX = event.pageX - this.offsetLeft; //event.pageX property returns position of the mouse pointer, relative to the left edge of the document.
 	var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
+	
 	paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
 		//if paint = true, record the value
 	addClick(mouseX, mouseY);
+
 	redraw(); //to update the canvas
 	});
 
@@ -91,14 +93,15 @@ var drawingAreaHeight;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE UP EVENT (a javascript method) 
-//crayon is off the paper
+//crayon is off the paper but still hovering over the canvas
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
-		//COMMENT OUT AT 9:09 THURSDAY
+		
 		clickY.length = 0; //reset x coordinates
 		clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-		redraw();
+		//COMMENTED OUT TUESDAY 6:30PM
+		// redraw();
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -126,7 +129,9 @@ function addClick(x, y, dragging) {
 	clickY.push(y);
 	clickDrag.push(dragging);
 	clickColor.push(currentColor); //record the chosen color when the user clicks
-	redraw();
+	
+	//COMMENTED OUT tuesday 6:39pm
+	// redraw();
 }
 
 $('#coloringBook').mousedown(start);
@@ -141,15 +146,11 @@ function redraw() {
 	// //added friday 9:54pm
 	// clearCanvas();
 
+	context.strokeStyle = currentColor;
+	context.lineWidth = 3;
 	context.lineJoin = "round";
 
 	console.log('redraw function called');
-
-	//added friday 9:39pm
-	context.save();
-	context.beginPath();
-	context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-	context.clip();
 
 	for(var i=0; i < clickX.length; i++) {
 		//added friday 9:39pm
@@ -162,8 +163,8 @@ function redraw() {
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();		
-		context.strokeStyle = currentColor;
-		context.lineWidth = 3;
+		// context.strokeStyle = currentColor;
+		// context.lineWidth = 3;
 		context.stroke();
 		}
 		//added friday 9:39pm
