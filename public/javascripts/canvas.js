@@ -174,11 +174,11 @@ function redraw() {
 
 	$('#betty_boop').click( function () {
 
-		 var drawingAreaX = 150;
-		 var drawingAreaY = 11;
-		 var drawingAreaWidth = 175;
-		 var drawingAreaHeight = 350;
-		 outlineImage.src = "images/betty_boop.jpg";
+		 // var drawingAreaX = 150;
+		 // var drawingAreaY = 11;
+		 // var drawingAreaWidth = 175;
+		 // var drawingAreaHeight = 350;
+		 // outlineImage.src = "images/betty_boop.jpg";
 		 context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
 	});
 
