@@ -54,7 +54,7 @@ var color16 = "#CD4A4C";
 var currentColor = '#FFFFFF';
 var clickColor = [];
 
-var outlineImage = new Image();
+// var outlineImage = new Image();
 // var drawingAreaX = 111;
 // var drawingAreaY = 11;
 // var drawingAreaWidth = 267;
@@ -146,16 +146,21 @@ function redraw() {
 	// //added friday 9:54pm
 	// clearCanvas();
 
-	context.strokeStyle = currentColor;
-	context.lineWidth = 3;
 	context.lineJoin = "round";
 
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
 		//added friday 9:39pm
-		 // context.save();
+		context.save();
 		context.beginPath(); //doesn't work if it's on line 124. why?
+		context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		context.clip();
+
+		var radius;
+		var i = 0;
+
+
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
@@ -163,25 +168,24 @@ function redraw() {
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();		
-		// context.strokeStyle = currentColor;
-		// context.lineWidth = 3;
+		context.strokeStyle = currentColor;
+		context.lineWidth = 3;
 		context.stroke();
 		}
-		//added friday 9:39pm
-		context.restore();	
+		
+		context.restore();
 
-		//added friday 10:09pm
 		context.globalAlpha = 1;
+	
+	// $('#betty_boop').click( function () {
 
-	$('#betty_boop').click( function () {
-
-		 // var drawingAreaX = 150;
-		 // var drawingAreaY = 11;
-		 // var drawingAreaWidth = 175;
-		 // var drawingAreaHeight = 350;
-		 // outlineImage.src = "images/betty_boop.jpg";
-		 context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-	});
+	// 	 // var drawingAreaX = 150;
+	// 	 // var drawingAreaY = 11;
+	// 	 // var drawingAreaWidth = 175;
+	// 	 // var drawingAreaHeight = 350;
+	// 	 // outlineImage.src = "images/betty_boop.jpg";
+	// 	 context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	// });
 
 
 		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
@@ -297,8 +301,8 @@ function prepareCanvas () {
 		var drawingAreaY = 11;
 		var drawingAreaWidth = 175;
 		var drawingAreaHeight = 350;
-		outlineImage.src = "images/betty_boop.jpg";
-		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+		// outlineImage.src = "images/betty_boop.jpg";
+		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
 	});
 }
 
