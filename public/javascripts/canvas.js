@@ -8,32 +8,13 @@ var paint; //(boolean)
 //////////////////  PREPARE THE CANVAS  ////////////////
 var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
 var canvasHeight = 375; 
-context.lineJoin = context.lineCap = 'round';
 var currentNote;
 
+context.lineJoin = context.lineCap = 'round';
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
-$('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
-	//add sound to click event.
-	//option to play sound for each color while coloring
-$('#color2').click( function () { currentColor = color2; currentNote = aNote });
-$('#color3').click(function () { currentColor = color3; currentNote = bFlat });
-$('#color4').click(function () { currentColor = color4; currentNote = bNote });
-$('#color5').click(function () { currentColor = color5; currentNote = cNote });
-$('#color6').click(function () { currentColor = color6; currentNote = cSharp });
-$('#color7').click(function () { currentColor = color7; currentNote = dNote });
-$('#color8').click(function () { currentColor = color8; currentNote = eFlat });
-$('#color9').click(function () { currentColor = color9; currentNote = eNote });
-$('#color10').click(function () { currentColor = color10; currentNote = fNote });
-$('#color11').click(function () { currentColor = color11; currentNote = fSharp });
-$('#color12').click(function () { currentColor = color12; currentNote = gNote });
-$('#color13').click(function () { currentColor = color13; currentNote = lowerC});
-$('#color14').click(function () { currentColor = color14; currentNote = lowerE });
-$('#color15').click(function () { currentColor = color15; currentNote = lowerG });
-$('#color16').click(function () { currentColor = color16; currentNote = upperC });
-
 var color1 = "#FFFB40";
 var color2 = "#744FE8";
 var color3 = "#FF4CAD";
@@ -54,15 +35,36 @@ var color16 = "#CD4A4C";
 var currentColor = '#FFFFFF';
 var clickColor = [];
 
-// var outlineImage = new Image();
-// var drawingAreaX = 111;
-// var drawingAreaY = 11;
-// var drawingAreaWidth = 267;
-// var drawingAreaHeight = 200;
 var drawingAreaX;
 var drawingAreaY;
 var drawingAreaWidth;
 var drawingAreaHeight;
+
+$('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
+	//add sound to click event.
+	//option to play sound for each color while coloring
+$('#color2').click( function () { currentColor = color2; currentNote = aNote; });
+$('#color3').click(function () { currentColor = color3; currentNote = bFlat; });
+$('#color4').click(function () { currentColor = color4; currentNote = bNote; });
+$('#color5').click(function () { currentColor = color5; currentNote = cNote; });
+$('#color6').click(function () { currentColor = color6; currentNote = cSharp; });
+$('#color7').click(function () { currentColor = color7; currentNote = dNote; });
+$('#color8').click(function () { currentColor = color8; currentNote = eFlat; });
+$('#color9').click(function () { currentColor = color9; currentNote = eNote; });
+$('#color10').click(function () { currentColor = color10; currentNote = fNote; });
+$('#color11').click(function () { currentColor = color11; currentNote = fSharp; });
+$('#color12').click(function () { currentColor = color12; currentNote = gNote; });
+$('#color13').click(function () { currentColor = color13; currentNote = lowerC; });
+$('#color14').click(function () { currentColor = color14; currentNote = lowerE; });
+$('#color15').click(function () { currentColor = color15; currentNote = lowerG; });
+$('#color16').click(function () { currentColor = color16; currentNote = upperC; });
+
+
+var outlineImage = new Image();
+// var drawingAreaX = 111;
+// var drawingAreaY = 11;
+// var drawingAreaWidth = 267;
+// var drawingAreaHeight = 200;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +102,7 @@ var drawingAreaHeight;
 		clickY.length = 0; //reset x coordinates
 		clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-		//COMMENTED OUT TUESDAY 6:30PM
+		//UNSURE ABOUT THIS 9/22 9:36PM
 		// redraw();
 	});
 
@@ -122,7 +124,8 @@ var drawingAreaHeight;
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-// var paint;
+//COMMENTED 9/22 9:46PM
+//var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
@@ -146,20 +149,26 @@ function redraw() {
 	// //added friday 9:54pm
 	// clearCanvas();
 
+	context.strokeStyle = currentColor;
+	context.lineWidth = 3;
 	context.lineJoin = "round";
 
 	console.log('redraw function called');
 
+	
+
+
 	for(var i=0; i < clickX.length; i++) {
-		//added friday 9:39pm
-		context.save();
+		//COMMENTED OUT 9/22 9:45pm
+		//context.save();
 		context.beginPath(); //doesn't work if it's on line 124. why?
-		context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-		context.clip();
+		
 
-		var radius;
-		var i = 0;
+		// var radius;
+		// var i = 0;
 
+		// context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+		// context.clip();
 
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
@@ -167,25 +176,23 @@ function redraw() {
 			context.moveTo(clickX[i]-1, clickY[i]);
 		}
 		context.lineTo(clickX[i], clickY[i]);
-		context.closePath();		
-		context.strokeStyle = currentColor;
-		context.lineWidth = 3;
-		context.stroke();
-		}
+		context.closePath();
+		context.stroke();		
+	}
 		
 		context.restore();
 
 		context.globalAlpha = 1;
 	
-	// $('#betty_boop').click( function () {
+	$('#betty_boop').click( function () {
 
 	// 	 // var drawingAreaX = 150;
 	// 	 // var drawingAreaY = 11;
 	// 	 // var drawingAreaWidth = 175;
 	// 	 // var drawingAreaHeight = 350;
 	// 	 // outlineImage.src = "images/betty_boop.jpg";
-	// 	 context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-	// });
+		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	});
 
 
 		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
@@ -195,7 +202,7 @@ function redraw() {
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
 		//drawingAreaHeight = the height to draw the image in the destination canvas
 
-	}
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
@@ -211,7 +218,7 @@ $('#eraseCanvas').click(clearCanvas);
 //want to save the canvas state 
 //save image as data url (png format by default)
 var link = document.createElement('a');
-link.innerHTML = 'download image';
+// link.innerHTML = 'download image';
 link.addEventListener('click', function(ev) {
     link.href = canvas.toDataURL();
     link.download = "mypainting.png";
@@ -278,7 +285,7 @@ var soundLength;
 	function end() {
 		 var end_time = new Date();
 	    console.log('end', end_time);
-	    soundLength = end_time-start_time;
+	    soundLength = end_time - start_time;
 	    console.log(currentColor, soundLength); //both global variables 
 	    //soundLength defined
 	    console.log('currentNote', currentNote);
