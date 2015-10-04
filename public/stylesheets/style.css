@@ -6,8 +6,7 @@ html,body
   padding: 0px;
   overflow-x: hidden; 
   overflow-y: auto;
-  /*background-color: #DADDE0;
-*/background-image: url('/images/blue_notes_recent.png');
+  background-image: url('/images/blue_notes_recent.png');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;  
@@ -42,8 +41,7 @@ header {
   font-size: 500%;
   font-weight: 400;
   margin: 0px auto 0px auto;
-  z-index: 1;
-  */  
+  z-index: 1; 
  }
 
 .definition {
@@ -52,8 +50,6 @@ header {
   display: block;
   height: 204px;
   width: 300px;
-  /*border: 3px outset #1F2B52;
-  background-color: #FFFDAD;*/
   margin: 5px;
   float: right;
   text-align: center;
@@ -65,8 +61,7 @@ header {
   border: 3px outset #1F2B52;
   background-color: rgba(255, 95, 101, 0.7);
   display: block;
-  /*float: right;
-*/}
+  }
 
 .directions {
   position: relative;
@@ -79,11 +74,9 @@ header {
   margin: 5px;
   top: 218px;
   left: 316px;
-  /*float: right;*/
   text-align: center;
   font-family: "Ubuntu", sans-serif;
   float: right;
-
 }
 
 .directions p {

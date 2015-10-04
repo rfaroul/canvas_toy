@@ -143,7 +143,7 @@ $('#coloringBook').mouseup(end);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
-var hasBeenClicked = false;
+// var hasBeenClicked = false; DON'T THINK I NEED THIS
 
 function redraw() {
 
@@ -155,7 +155,6 @@ function redraw() {
 
 	for(var i=0; i < clickX.length; i++) {
 		context.beginPath(); //doesn't work if it's on line 124. why?
-		
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {

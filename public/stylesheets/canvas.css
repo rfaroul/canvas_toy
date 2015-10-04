@@ -1,9 +1,16 @@
-#coloringBook {
+/*canvas, img { 
+	display:block; 
+	margin: 1em auto; 
+	border: 1px solid black; 
+}*/
+
+canvas {
 	position: absolute;
 	border: 2px solid #1F2B52;
 	margin: 100px auto 0px 5px;
 	background-color: #FFF;
 	bottom: 0px;
+	background:url(betty_boop.png); 
 }
 
 #eraseCanvas {
@@ -11,6 +18,15 @@
 	top: 218px;
 	right: 484px;
 
+}
+
+img {
+	border: 1px black;
+	position: absolute;
+	bottom: 5px;
+	left: 182px;
+	height: 350px;
+	display: inline;
 }
 
 .crayon {
