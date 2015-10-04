@@ -1,17 +1,16 @@
 var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
 var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
-// context.globalCompositeOperation = 'multiply';
 
 var paint; //(boolean)
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////  PREPARE THE CANVAS  ////////////////
+
 var canvasWidth = 500; //have to set canvas width and height here to clear the canvas 
 var canvasHeight = 375; 
-var currentNote;
-
 context.lineJoin = context.lineCap = 'round';
-
+var currentNote;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SET COLORS  ////////////////
@@ -31,14 +30,6 @@ var color13 = "#C384B1";
 var color14 = "#FB7FFF";
 var color15 = "#34A76C";
 var color16 = "#CD4A4C";
-
-var currentColor = '#FFFFFF';
-var clickColor = [];
-
-var drawingAreaX;
-var drawingAreaY;
-var drawingAreaWidth;
-var drawingAreaHeight;
 
 $('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
 	//add sound to click event.
@@ -60,25 +51,26 @@ $('#color15').click(function () { currentColor = color15; currentNote = lowerG; 
 $('#color16').click(function () { currentColor = color16; currentNote = upperC; });
 
 
+var currentColor = '#FFFFFF';
+var clickColor = [];
+
 var outlineImage = new Image(); //outlineImage = image to color
-// var drawingAreaX = 111;
-// var drawingAreaY = 11;
-// var drawingAreaWidth = 267;
-// var drawingAreaHeight = 200;
+var drawingAreaX = 150;
+var drawingAreaY = 11;
+var drawingAreaWidth = 175;
+var drawingAreaHeight = 350;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// MOUSE DOWN EVENT (a javascript method) 
 //when user clicks on canvas, record the position in an array via addClick function
 	crayonOn = $('#coloringBook').mousedown(function (event) {
-	var mouseX = event.pageX - this.offsetLeft; //event.pageX property returns position of the mouse pointer, relative to the left edge of the document.
-	var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
-	
-	paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
-		//if paint = true, record the value
-	addClick(mouseX, mouseY);
-
-	redraw(); //to update the canvas
+		var mouseX = event.pageX - this.offsetLeft; //event.pageX property returns position of the mouse pointer, relative to the left edge of the document.
+		var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
+		paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
+			//if paint = true, record the value
+		addClick(mouseX, mouseY);
+		redraw(); //to update the canvas
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +82,7 @@ var outlineImage = new Image(); //outlineImage = image to color
 		if(paint) {
 			addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
 			redraw();
-		}
+		};
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,11 +91,9 @@ var outlineImage = new Image(); //outlineImage = image to color
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
 		
-		clickY.length = 0; //reset x coordinates
-		clickX.length = 0; //reset y coordinates
+		//clickY.length = 0; //reset x coordinates
+		//clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-		//UNSURE ABOUT THIS 9/22 9:36PM
-		// redraw();
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,7 +101,6 @@ var outlineImage = new Image(); //outlineImage = image to color
 //if the crayon goes off the paper
 	crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 		paint = false;
-		//with 109+110 colors don't change
 
 		clickY.length = 0;
 		clickX.length = 0;
@@ -124,17 +113,13 @@ var outlineImage = new Image(); //outlineImage = image to color
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-//COMMENTED 9/22 9:46PM
-//var paint;
+var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
 	clickY.push(y);
 	clickDrag.push(dragging);
 	clickColor.push(currentColor); //record the chosen color when the user clicks
-	
-	//COMMENTED OUT tuesday 6:39pm
-	// redraw();
 }
 
 $('#coloringBook').mousedown(start);
@@ -146,11 +131,8 @@ $('#coloringBook').mouseup(end);
 // var hasBeenClicked = false; DON'T THINK I NEED THIS
 
 function redraw() {
-
-	context.strokeStyle = currentColor;
-	context.lineWidth = 3;
 	context.lineJoin = "round";
-
+	
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
@@ -162,14 +144,17 @@ function redraw() {
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();
+		context.strokeStyle = currentColor;
+		context.lineWidth = 3;
 		context.stroke();		
 	}
 		
-		context.restore();
+	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 
-		context.globalAlpha = 1;
+		// context.restore();
 
-		
+		// context.globalAlpha = 1;
+
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
@@ -269,9 +254,19 @@ var soundLength;
 	var song = [];
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// ONLOAD FUNCTIONS //////////////////
 
+$(document).ready(prepareCanvas);
 
+function prepareCanvas () { 
+	outlineImage.src = "images/betty_boop.png";
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+};
 
+outlineImage.onload = function () {
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+};
 
 
 
