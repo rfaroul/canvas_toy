@@ -60,7 +60,7 @@ $('#color15').click(function () { currentColor = color15; currentNote = lowerG; 
 $('#color16').click(function () { currentColor = color16; currentNote = upperC; });
 
 
-var outlineImage = new Image();
+var outlineImage = new Image(); //outlineImage = image to color
 // var drawingAreaX = 111;
 // var drawingAreaY = 11;
 // var drawingAreaWidth = 267;
@@ -146,8 +146,6 @@ $('#coloringBook').mouseup(end);
 var hasBeenClicked = false;
 
 function redraw() {
-	// //added friday 9:54pm
-	// clearCanvas();
 
 	context.strokeStyle = currentColor;
 	context.lineWidth = 3;
@@ -155,21 +153,9 @@ function redraw() {
 
 	console.log('redraw function called');
 
-	
-
-
 	for(var i=0; i < clickX.length; i++) {
-		//COMMENTED OUT 9/22 9:45pm
-		//context.save();
 		context.beginPath(); //doesn't work if it's on line 124. why?
 		
-
-		// var radius;
-		// var i = 0;
-
-		// context.rect(drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-		// context.clip();
-
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
@@ -183,20 +169,8 @@ function redraw() {
 		context.restore();
 
 		context.globalAlpha = 1;
-	
-	$('#betty_boop').click( function () {
 
-	// 	 // var drawingAreaX = 150;
-	// 	 // var drawingAreaY = 11;
-	// 	 // var drawingAreaWidth = 175;
-	// 	 // var drawingAreaHeight = 350;
-	// 	 // outlineImage.src = "images/betty_boop.jpg";
-		context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-	});
-
-
-		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-		//outlineImage = image to color
+		
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
@@ -295,23 +269,7 @@ var soundLength;
 
 	var song = [];
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// ONLOAD FUNCTIONS //////////////////
 
-$(document).ready(prepareCanvas);
-
-function prepareCanvas () { 
-
-	$('#betty_boop').click( function () {
-
-		var drawingAreaX = 150;
-		var drawingAreaY = 11;
-		var drawingAreaWidth = 175;
-		var drawingAreaHeight = 350;
-		// outlineImage.src = "images/betty_boop.jpg";
-		// context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-	});
-}
 
 
 

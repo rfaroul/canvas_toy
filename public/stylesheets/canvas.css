@@ -3,13 +3,13 @@
 	border: 2px solid #1F2B52;
 	margin: 100px auto 0px 5px;
 	background-color: #FFF;
-	bottom: -421px;
+	bottom: 0px;
 }
 
 #eraseCanvas {
 	position: absolute;
-	top: 50px;
-	right: 414px;
+	top: 218px;
+	right: 484px;
 
 }
 
@@ -100,8 +100,8 @@ img {
 
 #color10 {
 	background-color: #323AE8; 
-	top: 241px;
-	right: 220px;
+	top: 338px;
+	right: 466px;
 }
 
 #color11 {
@@ -124,14 +124,14 @@ img {
 
 #color14 {
 	background-color: #FB7FFF; 
-	top: 71px;
-	right: 308px;
+	top: 118px;
+	right: 347px;
 }
 
 #color15 {
 	background-color: #34A76C; 
-	top: 152px;
-	right: 434px;
+	top: 283px;
+	right: 497px;
 }
 
 #color16 {
@@ -146,7 +146,7 @@ img {
 
 #play {
 	position: absolute;
-	top: 49px;
-	right: 177px;
+	top: 293px;
+	right: 400px;
 
 }
