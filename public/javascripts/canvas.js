@@ -90,9 +90,6 @@ var drawingAreaHeight = 350;
 //crayon is off the paper but still hovering over the canvas
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
-		
-		//clickY.length = 0; //reset x coordinates
-		//clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
 	});
 
@@ -131,11 +128,13 @@ $('#coloringBook').mouseup(end);
 // var hasBeenClicked = false; DON'T THINK I NEED THIS
 
 function redraw() {
+	clearCanvas(); //added this but it removes color each time
 	context.lineJoin = "round";
 	
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
+		
 		context.beginPath(); //doesn't work if it's on line 124. why?
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
@@ -149,17 +148,15 @@ function redraw() {
 		context.stroke();		
 	}
 		
-	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+	context.restore();
 
-		// context.restore();
-
-		// context.globalAlpha = 1;
+	context.globalAlpha = 1;
 
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
 		//drawingAreaHeight = the height to draw the image in the destination canvas
-
+	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

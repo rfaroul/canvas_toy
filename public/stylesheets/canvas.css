@@ -4,8 +4,6 @@
 	margin: 100px auto 0px 5px;
 	background-color: #FFF;
 	bottom: 0px;
-	/*background: url(betty_boop.png); */
-		/*can't have background url and background color*/
 }
 
 #eraseCanvas {
@@ -14,8 +12,7 @@
 	right: 484px;
 }
 
-#bettyBoop {
-	position: abosolute;
+/*#bettyBoop {
 	border: 1px black;
 	position: absolute;
 	bottom: 5px;
@@ -23,6 +20,7 @@
 	height: 350px;
 	display: inline;
 }
+*/
 
 .crayon {
 	position: absolute;
@@ -43,14 +41,14 @@
 	left: 114px;
 }
 
-img {
+/*img {
 	border: 1px black;
 	position: absolute;
 	top: 105px;
 	left: 182px;
 	height: 350px;
 	display: inline;
-}
+}*/
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  COLORS  ////////////////////////////////*/
