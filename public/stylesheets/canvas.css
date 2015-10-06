@@ -12,16 +12,6 @@
 	right: 484px;
 }
 
-/*#bettyBoop {
-	border: 1px black;
-	position: absolute;
-	bottom: 5px;
-	left: 182px;
-	height: 350px;
-	display: inline;
-}
-*/
-
 .crayon {
 	position: absolute;
 	font-weight: bold;
@@ -41,14 +31,6 @@
 	left: 114px;
 }
 
-/*img {
-	border: 1px black;
-	position: absolute;
-	top: 105px;
-	left: 182px;
-	height: 350px;
-	display: inline;
-}*/
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  COLORS  ////////////////////////////////*/
@@ -157,5 +139,4 @@
 	position: absolute;
 	top: 293px;
 	right: 400px;
-
 }

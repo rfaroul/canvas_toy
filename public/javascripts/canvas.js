@@ -79,7 +79,7 @@ var drawingAreaHeight = 350;
 //GLOBAL VARIABLES mouseX and mouseY
 
 	crayonMove = $('#coloringBook').mousemove(function(event) {
-		if(paint) {
+		if(paint==true) {
 			addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
 			redraw();
 		};
@@ -90,7 +90,10 @@ var drawingAreaHeight = 350;
 //crayon is off the paper but still hovering over the canvas
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
+		clickY.length = 0; //reset x coordinates
+		clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
+		redraw();
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +113,6 @@ var drawingAreaHeight = 350;
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
@@ -128,13 +130,15 @@ $('#coloringBook').mouseup(end);
 // var hasBeenClicked = false; DON'T THINK I NEED THIS
 
 function redraw() {
-	clearCanvas(); //added this but it removes color each time
-	context.lineJoin = "round";
+	clearCanvas(); // ????? added this but it removes color each time
 	
+	context.strokeStyle = currentColor;
+	context.lineJoin = "round"; //CONSIDER MOVING AFTER LINE 149
+	context.lineWidth = 3;
+
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
-		
 		context.beginPath(); //doesn't work if it's on line 124. why?
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
@@ -143,21 +147,21 @@ function redraw() {
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();
-		context.strokeStyle = currentColor;
-		context.lineWidth = 3;
+		
 		context.stroke();		
 	}
 		
 	context.restore();
 
-	context.globalAlpha = 1;
-
+	context.globalAlpha = 1; //specifies alpha value of shapes and images before they're drawn onto canvas. ranges from 0 to 1. 1 = opaque  
+		//NOT SURE THAT I NEED LINE 155 BECAUSE "1" IS THE DEFAULT 
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
 		//drawingAreaHeight = the height to draw the image in the destination canvas
 	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 };
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
