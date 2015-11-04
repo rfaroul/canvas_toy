@@ -1,7 +1,7 @@
 var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
 var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
 
-var paint; //(boolean)
+var paint; 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,8 +32,6 @@ var color15 = "#34A76C";
 var color16 = "#CD4A4C";
 
 $('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
-	//add sound to click event.
-	//option to play sound for each color while coloring
 $('#color2').click( function () { currentColor = color2; currentNote = aNote; });
 $('#color3').click(function () { currentColor = color3; currentNote = bFlat; });
 $('#color4').click(function () { currentColor = color4; currentNote = bNote; });
@@ -54,7 +52,7 @@ $('#color16').click(function () { currentColor = color16; currentNote = upperC; 
 var currentColor = '#FFFFFF';
 var clickColor = [];
 
-var outlineImage = new Image(); //outlineImage = image to color
+var outlineImage = new Image(); 
 var drawingAreaX = 150;
 var drawingAreaY = 11;
 var drawingAreaWidth = 175;
@@ -69,6 +67,7 @@ var drawingAreaHeight = 350;
 		var mouseY = event.pageY - this.offsetTop; //event.pageY property is relative to the top edge of the document.
 		paint = true; //lets us know if the virtual crayon is pressing down on the paper or not
 			//if paint = true, record the value
+		console.log(mouseX, mouseY); //beginning position of pointer
 		addClick(mouseX, mouseY);
 		redraw(); //to update the canvas
 	});
@@ -122,8 +121,8 @@ function addClick(x, y, dragging) {
 	clickColor.push(currentColor); //record the chosen color when the user clicks
 };
 
-//$('#coloringBook').mousedown(start);
-//$('#coloringBook').mouseup(end);
+$('#coloringBook').mousedown(start);
+$('#coloringBook').mouseup(end);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +164,6 @@ function redraw() {
 ////////////////// CLEAR THE CANVAS //////////////////
 function clearCanvas() {
 	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
-	//canvas.width = canvas.width;
 };
 
 $('#eraseCanvas').click(clearCanvas);
@@ -175,13 +173,13 @@ $('#eraseCanvas').click(clearCanvas);
 //want to save the canvas state 
 //save image as data url (png format by default)
 var link = document.createElement('a');
-// link.innerHTML = 'download image';
+link.innerHTML = 'download image';
 link.addEventListener('click', function(ev) {
     link.href = canvas.toDataURL();
     link.download = "mypainting.png";
 }, false);
 document.body.appendChild(link);
-$('a').addClass('download');
+//$('a').addClass('download');
 
 
 
@@ -220,7 +218,7 @@ function playAudio ( userSong ) {
 		console.log("you're done!")
 	};
 		//how to get it to stop
-		// restart Audio when finished playing for specified length of time
+		//restart Audio when finished playing for specified length of time
 };
 
 $('#play').click( function(event){
@@ -235,7 +233,7 @@ var start_time;
 var soundLength;
 
 	function start () {
-		start_time = new Date();
+		start_time = new Date(); //undefined
 		console.log('start', start_time);
 	}
 
@@ -260,7 +258,7 @@ $(document).ready(prepareCanvas);
 
 function prepareCanvas () { 
 	outlineImage.src = "images/betty_boop.png";
-	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	//context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
 };
 
 outlineImage.onload = function () {
