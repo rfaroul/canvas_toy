@@ -79,10 +79,10 @@ var drawingAreaHeight = 350;
 //GLOBAL VARIABLES mouseX and mouseY
 
 	crayonMove = $('#coloringBook').mousemove(function(event) {
-		if(paint==true) {
+		if(paint) {
 			addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
 			redraw();
-		};
+		}
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,10 +90,10 @@ var drawingAreaHeight = 350;
 //crayon is off the paper but still hovering over the canvas
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
-		clickY.length = 0; //reset x coordinates
-		clickX.length = 0; //reset y coordinates
+		//clickY.length = 0; //reset x coordinates
+		//clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-		redraw();
+		//redraw(); 
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,8 +102,8 @@ var drawingAreaHeight = 350;
 	crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 		paint = false;
 
-		clickY.length = 0;
-		clickX.length = 0;
+		//clickY.length = 0;
+		//clickX.length = 0;
 		console.log('end of mouseleave function', currentColor, soundLength); 
 	});
 
@@ -113,33 +113,30 @@ var drawingAreaHeight = 350;
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
+var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
 	clickY.push(y);
 	clickDrag.push(dragging);
 	clickColor.push(currentColor); //record the chosen color when the user clicks
-}
+};
 
-$('#coloringBook').mousedown(start);
-$('#coloringBook').mouseup(end);
+//$('#coloringBook').mousedown(start);
+//$('#coloringBook').mouseup(end);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
-// var hasBeenClicked = false; DON'T THINK I NEED THIS
-
 function redraw() {
-	clearCanvas(); // ????? added this but it removes color each time
+	clearCanvas(); // ????? added this but it removes color each time. DO I NEED THIS?
 	
-	context.strokeStyle = currentColor;
 	context.lineJoin = "round"; //CONSIDER MOVING AFTER LINE 149
-	context.lineWidth = 3;
-
+	
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
-		context.beginPath(); //doesn't work if it's on line 124. why?
+		context.beginPath(); 
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
 		} else {
@@ -147,7 +144,8 @@ function redraw() {
 		}
 		context.lineTo(clickX[i], clickY[i]);
 		context.closePath();
-		
+		context.strokeStyle = clickColor[i];
+		context.lineWidth = 3;
 		context.stroke();		
 	}
 		
@@ -166,7 +164,7 @@ function redraw() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
 function clearCanvas() {
-	context.clearRect(0, 0, canvas.width, canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
 	//canvas.width = canvas.width;
 };
 
