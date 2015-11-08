@@ -84,6 +84,13 @@ header {
   font-size: 15px;
 }
 
+a {
+    background: #69c;
+    color: #fff;
+    padding: 5px 10px;
+    position: relative;
+    cursor: default;
+}
 
 
 
