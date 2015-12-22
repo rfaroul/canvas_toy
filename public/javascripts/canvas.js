@@ -1,7 +1,7 @@
 var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
 var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
 
-var paint; 
+// var paint = false; //A
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +78,7 @@ var drawingAreaHeight = 350;
 //GLOBAL VARIABLES mouseX and mouseY
 
 	crayonMove = $('#coloringBook').mousemove(function(event) {
-		if(paint) {
+		if(paint==true) {
 			addClick(event.pageX - this.offsetLeft, event.pageY - this.offsetTop, true);
 			redraw();
 		}
@@ -89,10 +89,8 @@ var drawingAreaHeight = 350;
 //crayon is off the paper but still hovering over the canvas
 	crayonOff = $('#coloringBook').mouseup(function(event) {
 		paint = false;
-		//clickY.length = 0; //reset x coordinates
-		//clickX.length = 0; //reset y coordinates
 		console.log('end of mouseup', currentColor, soundLength); //soundLength is undefined here
-		//redraw(); 
+		// redraw(); 
 	});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,9 +98,6 @@ var drawingAreaHeight = 350;
 //if the crayon goes off the paper
 	crayonOffCanvas = $('#coloringBook').mouseleave(function(event) {
 		paint = false;
-
-		//clickY.length = 0;
-		//clickX.length = 0;
 		console.log('end of mouseleave function', currentColor, soundLength); 
 	});
 
@@ -124,17 +119,29 @@ function addClick(x, y, dragging) {
 $('#coloringBook').mousedown(start);
 $('#coloringBook').mouseup(end);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// CLEAR THE CANVAS //////////////////
+function clearCanvas() {
+	context.save();
+	console.log("mouseX " mouseX, "mouseY " mouseY);
+	context.setTransform(1, 0, 0, 1, 0, 0); //should always clear the right space. setTransform() sets the transformation matrix to its default state
+	context.clearRect(0, 0, canvas.width, canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
+	context.restore(); //still have old transforms
+};
+
+$('#eraseCanvas').click(clearCanvas);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
 function redraw() {
-	clearCanvas(); // ????? added this but it removes color each time. DO I NEED THIS?
+	clearCanvas(); 
 	
 	context.lineJoin = "round"; //CONSIDER MOVING AFTER LINE 149
-	
+
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
+		context.save();
 		context.beginPath(); 
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
@@ -159,15 +166,6 @@ function redraw() {
 	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 };
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// CLEAR THE CANVAS //////////////////
-function clearCanvas() {
-	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
-};
-
-$('#eraseCanvas').click(clearCanvas);
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
@@ -179,7 +177,7 @@ link.addEventListener('click', function(ev) {
     link.download = "mypainting.png";
 }, false);
 document.body.appendChild(link);
-//$('a').addClass('download');
+
 
 
 
@@ -258,7 +256,7 @@ $(document).ready(prepareCanvas);
 
 function prepareCanvas () { 
 	outlineImage.src = "images/betty_boop.png";
-	//context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
 };
 
 outlineImage.onload = function () {
