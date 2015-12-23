@@ -1,7 +1,7 @@
 var canvas = document.getElementById("coloringBook"); //grabbing the id assigned to the canvas element
 var context = canvas.getContext("2d"); //need the 2d rendering context for the drawing surface of a canvas element in order to draw on it
 
-// var paint = false; //A
+var paint = false; 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,6 @@ var drawingAreaHeight = 350;
 var clickX = []; //saves X coordinates
 var clickY = []; //saves Y coordinates
 var clickDrag = []; //saves final position of crayon
-var paint;
 
 function addClick(x, y, dragging) {
 	clickX.push(x);
@@ -122,11 +121,7 @@ $('#coloringBook').mouseup(end);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
 function clearCanvas() {
-	context.save();
-	console.log("mouseX " mouseX, "mouseY " mouseY);
-	context.setTransform(1, 0, 0, 1, 0, 0); //should always clear the right space. setTransform() sets the transformation matrix to its default state
-	context.clearRect(0, 0, canvas.width, canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
-	context.restore(); //still have old transforms
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
 };
 
 $('#eraseCanvas').click(clearCanvas);

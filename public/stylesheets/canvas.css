@@ -17,11 +17,11 @@
 	font-weight: bold;
 	position: absolute;
 	color: #000;
-	background-color: #FFFB40;
-	border-radius: 10px;
+	/*background-color: #FFFB40;
+*/	border-radius: 10px;
 	height: 20px;
 	width: 51px;
-	text-align: center;
+	/*text-align: center;*/
 	cursor: pointer;
 }
 
