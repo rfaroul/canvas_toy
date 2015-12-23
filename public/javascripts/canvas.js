@@ -32,7 +32,7 @@ var color15 = "#34A76C";
 var color16 = "#CD4A4C";
 
 $('#color1').click(function () { currentColor = color1; currentNote = aFlat; });
-$('#color2').click( function () { currentColor = color2; currentNote = aNote; });
+$('#color2').click(function () { currentColor = color2; currentNote = aNote; });
 $('#color3').click(function () { currentColor = color3; currentNote = bFlat; });
 $('#color4').click(function () { currentColor = color4; currentNote = bNote; });
 $('#color5').click(function () { currentColor = color5; currentNote = cNote; });
