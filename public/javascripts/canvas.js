@@ -118,13 +118,6 @@ function addClick(x, y, dragging) {
 $('#coloringBook').mousedown(start);
 $('#coloringBook').mouseup(end);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// CLEAR THE CANVAS //////////////////
-function clearCanvas() {
-	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
-};
-
-$('#eraseCanvas').click(clearCanvas);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// REDRAW FUNCTION (clears the canvas and redraws everything)
@@ -153,7 +146,7 @@ function redraw() {
 	context.restore();
 
 	context.globalAlpha = 1; //specifies alpha value of shapes and images before they're drawn onto canvas. ranges from 0 to 1. 1 = opaque  
-		//NOT SURE THAT I NEED LINE 155 BECAUSE "1" IS THE DEFAULT 
+		
 		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
 		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
 		//drawingAreaWidth = the width to draw the image in the destination  canvas
@@ -241,7 +234,7 @@ var soundLength;
 	    console.log('end function', song);
 	}
 
-	var song = [];
+var song = [];
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,6 +252,37 @@ outlineImage.onload = function () {
 };
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// CLEAR THE CANVAS //////////////////
+function clearCanvas() {
+	context.clearRect(0, 0, context.canvas.width, context.canvas.height); // CanvasRenderingContext2D.clearRect() method of the Canvas 2D API sets all pixels in the rectangle defined by starting point (x, y) and size (width, height) to transparent black, erasing any previously drawn content.
+};
 
+function resetClicks() {
+    // reset click arrays to original state, prevent redrawing of old lines
+    clickX = [];
+    clickY = [];
+    clickDrag = [];
+    clickColor = [];
+    song = [];
+};
+
+function drawOutline() {
+    //drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
+        //drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
+        //drawingAreaWidth = the width to draw the image in the destination  canvas
+        //drawingAreaHeight = the height to draw the image in the destination canvas
+    context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+};
+
+function resetCanvas() {
+    // Removes user lines from canvas, but keeps outline
+    resetClicks();
+    clearCanvas();
+    drawOutline();
+    console.log("what's in the song array?", song);
+};
+
+$('#eraseCanvas').click(resetCanvas);
 
 
