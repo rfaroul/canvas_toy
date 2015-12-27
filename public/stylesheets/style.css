@@ -95,10 +95,10 @@ a {
     color: rgb(54, 204, 178);
     position: absolute;
     border-radius: 5px;
-    cursor: default;
+    cursor: pointer;
 }
 
-.save p {
+.download {
   position: relative;
   bottom: 8px;
   left: 2px;

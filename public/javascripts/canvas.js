@@ -154,14 +154,17 @@ function redraw() {
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
 //save image as data url (png format by default)
-var link = $('.save');
-			//link.append("<p>download</p>");
-//link.innerHTML = 'download';
-link.click (function () {
-    link.href = canvas.toDataURL();
+var link = document.createElement('a');
+var p = document.createElement('p');
+$(p).addClass('download');
+p.innerHTML = 'download';
+$(link).addClass('save');
+link.appendChild(p);
+link.addEventListener('click', function (ev) {
+	link.href = canvas.toDataURL();
     link.download = "mypainting.png";
 }, false);
-// document.body.appendChild(link);
+document.body.appendChild(link);
 
 
 
