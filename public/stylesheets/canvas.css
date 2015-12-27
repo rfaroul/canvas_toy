@@ -1,9 +1,9 @@
 #coloringBook {
-	position: absolute;
+	position: fixed;
 	border: 2px solid #1F2B52;
-	/*margin: 5px auto 5px 5px;*/
-	margin: 5px 5px;
-	bottom: 5px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #eraseCanvas {
@@ -14,13 +14,14 @@
 
 .crayon {
 	position: absolute;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	position: absolute;
 	color: #000;
-	border-radius: 10px;
-	height: 20px;
+	border-radius: 1px;
+	height: 51px;
 	width: 51px;
 	cursor: pointer;
+	margin: 51px 51px;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -29,98 +30,98 @@
 
 #color1 {
 	background-color: #FFFB40;
-	top: 256px;
+	top: 355px;
 	left: 538px;
 	text-align: center;
 }
 
 #color2 {
 	background-color: #744FE8;
-	top: 219px;
-	left: 578px;
+	top: 355px;
+	left: 589px;
 }
 
 #color3 {
 	background-color: #FF4CAD;
-	top: 182px;
-	left: 618px;
+	top: 355px;
+	left: 640px;
 }
 
 #color4 {
 	background-color: #E82B2D;
-	top: 145px;
-	left: 658px;
+	top: 355px;
+	left: 691px;
 }
 
 #color5 {
 	background-color: #FFCFB4; 
-	top: 145px;
-	right: 436px;
+	top: 406px;
+	left: 538px;
 }
 #color6 {
 	background-color: #966643; 
-	top: 182px;
-	right: 396px;
+	top: 406px;
+	left: 589px;
 }
 
 #color7 {
 	background-color: #999999; 
-	top: 219px;
-	right: 356px;
+	top: 406px;
+	left: 640px;
 }
 
 #color8 {
 	background-color: #E8A22B; 
-	top: 256px;
-	right: 316px;
+	top: 406px;
+	left: 691px;
 }
 
 #color9 {
 	background-color: #FF806E; 
-	top: 156px;
-	right: 313px;
+	top: 457px;
+	left: 538px;
 }
 
 #color10 {
 	background-color: #323AE8; 
-	top: 338px;
-	right: 466px;
+	top: 457px;
+	left: 589px;
 }
 
 #color11 {
 	background-color: #89FF9B; 
-	top: 201px;
-	right: 326px;
+	top: 457px;
+	left: 640px;
 }
 
 #color12 {
 	background-color: #892F9B; 
-	top: 241px;
-	right: 317px;
+	top: 457px;
+	left: 691px;
 }
 
 #color13 {
 	background-color: #C384B1; 
-	top: 240px;
-	right: 414px;
+	top: 508px;
+	left: 538px;
 }
 
 #color14 {
 	background-color: #FB7FFF; 
-	top: 118px;
-	right: 347px;
+	top: 508px;
+	left: 589px;
 }
 
 #color15 {
 	background-color: #34A76C; 
-	top: 283px;
-	right: 497px;
+	top: 508px;
+	left: 640px;
 }
 
 #color16 {
 	background-color: #CD4A4C; 
-	top: 110px;
-	right: 424px;
+	top: 508px;
+	left: 691px;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -192,7 +193,7 @@ a {
 	font-size: 14px;
 	position: relative;
 	bottom: 7px;
-	left: 3px;
+	left: 6px;
 }
 
 .button {
