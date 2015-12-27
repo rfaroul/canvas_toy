@@ -129,7 +129,6 @@ function redraw() {
 	console.log('redraw function called');
 
 	for(var i=0; i < clickX.length; i++) {
-		context.save();
 		context.beginPath(); 
 		if (clickDrag[i] && i) {
 		context.moveTo(clickX[i-1], clickY[i-1]);
@@ -142,8 +141,6 @@ function redraw() {
 		context.lineWidth = 3;
 		context.stroke();		
 	}
-		
-	context.restore();
 
 	context.globalAlpha = 1; //specifies alpha value of shapes and images before they're drawn onto canvas. ranges from 0 to 1. 1 = opaque  
 		
