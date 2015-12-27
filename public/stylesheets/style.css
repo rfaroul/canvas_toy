@@ -6,7 +6,6 @@ html,body
   padding: 0px;
   overflow-x: hidden; 
   overflow-y: auto;
-  background-image: url('/images/blue_notes_recent.png');
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;  
@@ -85,12 +84,22 @@ header {
 }
 
 a {
-    background: #69c;
-    color: #fff;
-    padding: 5px 10px;
-    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    background: rgba(31, 43, 82, 0.7);
+    display: block;
+    height: 30px;
+    width: 67px;
+    top: 302px;
+    left: 573px;
+    color: rgb(54, 204, 178);
+    position: absolute;
+    border-radius: 5px;
     cursor: default;
 }
 
-
-
+.save p {
+  position: relative;
+  bottom: 8px;
+  left: 2px;
+}

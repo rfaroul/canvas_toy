@@ -2,7 +2,6 @@
 	position: absolute;
 	border: 2px solid #1F2B52;
 	margin: 100px auto 0px 5px;
-	background-color: #FFF;
 	bottom: 0px;
 }
 
@@ -17,20 +16,11 @@
 	font-weight: bold;
 	position: absolute;
 	color: #000;
-	/*background-color: #FFFB40;
-*/	border-radius: 10px;
+	border-radius: 10px;
 	height: 20px;
 	width: 51px;
-	/*text-align: center;*/
 	cursor: pointer;
 }
-
-
-/*.save {
-	position: relative;
-	top: 14px;
-	left: 114px;
-}*/
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
@@ -141,3 +131,34 @@
 	top: 293px;
 	right: 400px;
 }
+
+.play-button {
+	top: 302px;
+	left: 523px;
+	height: 30px;
+	width: 45px;
+	background-color: rgba(31, 43, 82, 0.7); /* purple/grey */
+	border-radius: 5px;
+	position: absolute;
+}
+
+.play-button:hover {
+    background-color: rgba(31, 43, 82, 1);
+}
+
+.play-button:after {
+    content: ""; /* content property is used with the :before and :after pseudo-elements, to insert generated content */
+    display: block;
+    position: relative;
+    top: 4.5px;
+    left: 17px;
+    margin: 0 auto; /* generates space around elements */
+    border-style: solid;
+    border-width: 9.5px 0 9.5px 17px; /* creates the triangle */
+    			/* REMINDER: top right bottom left */
+    border-color: transparent transparent transparent rgba(54, 204, 178, 1);
+}
+
+
+
+

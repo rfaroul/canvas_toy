@@ -147,24 +147,21 @@ function redraw() {
 
 	context.globalAlpha = 1; //specifies alpha value of shapes and images before they're drawn onto canvas. ranges from 0 to 1. 1 = opaque  
 		
-		//drawingAreaX = where to put the top-left corner of the source image (x-coordinate)
-		//drawingAreaY = where to put the top-left corner of the source image (y-coordinate)
-		//drawingAreaWidth = the width to draw the image in the destination  canvas
-		//drawingAreaHeight = the height to draw the image in the destination canvas
-	context.drawImage( outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+	drawOutline();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
 //save image as data url (png format by default)
-var link = document.createElement('a');
-link.innerHTML = 'download image';
-link.addEventListener('click', function(ev) {
+var link = $('.save');
+			//link.append("<p>download</p>");
+//link.innerHTML = 'download';
+link.click (function () {
     link.href = canvas.toDataURL();
     link.download = "mypainting.png";
 }, false);
-document.body.appendChild(link);
+// document.body.appendChild(link);
 
 
 
@@ -207,8 +204,7 @@ function playAudio ( userSong ) {
 		//restart Audio when finished playing for specified length of time
 };
 
-$('#play').click( function(event){
-
+$('.play-button').click( function(event){
 	playAudio( song );
 } );
 	
@@ -250,7 +246,6 @@ function prepareCanvas () {
 outlineImage.onload = function () {
 	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 };
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
