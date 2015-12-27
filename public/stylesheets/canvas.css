@@ -1,8 +1,9 @@
 #coloringBook {
 	position: absolute;
 	border: 2px solid #1F2B52;
-	margin: 100px auto 0px 5px;
-	bottom: 0px;
+	/*margin: 5px auto 5px 5px;*/
+	margin: 5px 5px;
+	bottom: 5px;
 }
 
 #eraseCanvas {
@@ -194,4 +195,10 @@ a {
 	left: 3px;
 }
 
+.button {
+	display: inline-block;
+	position: absolute;
+	margin: auto 0px 5px 0px;
+	bottom: 5px;
+}
 

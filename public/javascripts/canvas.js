@@ -155,7 +155,7 @@ var link = document.createElement('a');
 var p = document.createElement('p');
 $(p).addClass('download');
 p.innerHTML = 'download';
-$(link).addClass('save');
+$(link).addClass('button save');
 link.appendChild(p);
 link.addEventListener('click', function (ev) {
 	link.href = canvas.toDataURL();
@@ -229,21 +229,6 @@ var soundLength;
 
 var song = [];
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// ONLOAD FUNCTIONS //////////////////
-
-$(document).ready(prepareCanvas);
-
-function prepareCanvas () { 
-	outlineImage.src = "images/betty_boop.png";
-	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
-};
-
-outlineImage.onload = function () {
-	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
-};
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// CLEAR THE CANVAS //////////////////
 function clearCanvas() {
@@ -278,3 +263,16 @@ function resetCanvas() {
 $('.reset').click(resetCanvas);
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// ONLOAD FUNCTIONS //////////////////
+
+$(document).ready(prepareCanvas);
+
+function prepareCanvas () { 
+	outlineImage.src = "images/betty_boop.png";
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight); 
+};
+
+outlineImage.onload = function () {
+	context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
+};
