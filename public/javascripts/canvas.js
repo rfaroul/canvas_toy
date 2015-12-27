@@ -163,9 +163,6 @@ link.addEventListener('click', function (ev) {
 }, false);
 document.body.appendChild(link);
 
-
-
-
 // To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
 
 // Note: The toDataURL() method requires that any images drawn onto the canvas are hosted on a web server with the same domain as the code executing it.  If this condition is not met, a SECURITY_ERR exception is thrown.
@@ -278,6 +275,6 @@ function resetCanvas() {
     console.log("what's in the song array?", song);
 };
 
-$('#eraseCanvas').click(resetCanvas);
+$('.reset').click(resetCanvas);
 
 
