@@ -50,6 +50,7 @@ header {
   top: 0;
   bottom: 0;
   right: auto;
+  overflow: hidden;
 }
 
 .definition p {

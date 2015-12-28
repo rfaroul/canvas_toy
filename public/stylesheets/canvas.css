@@ -1,6 +1,7 @@
 #coloringBook {
 	position: absolute;
-	display: block;
+	/* when position is relative, canvas is at horizontally centered, not vertically  */
+	display: block; /* block has whitespace above and below and tolerates no HTML elements next to it, except when ordered otherwise (by adding a float declaration to another element, for instance).  */
 	border: 2px solid #1F2B52;
 	height: 375px;
 	width: 500px;
@@ -160,18 +161,15 @@
 
 /*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
-/*//////////////////////  NOTES/SOUNDS  ////////////////////////////////*/
+/*//////////////////////  BUTTONS  ////////////////////////////////*/
 
 .play-button {
-	/*top: 302px;
-	left: 523px;*/
+	position: relative;
 	height: 30px;
 	width: 45px;
 	background-color: rgb(210, 213, 217);
 	border-radius: 5px;
-	/*position: relative;*/
-	bottom: -117px;
-	right: 237px;
+	margin-left: 80px;
 }
 
 .play-button:hover {
@@ -180,53 +178,52 @@
 
 .play-button:after {
     content: ""; /* content property is used with the :before and :after pseudo-elements, to insert generated content */
-    display: block;
+    display: inline-block;
     position: relative;
-    top: 4.5px;
-    left: 17px;
-    margin: 0 auto; /* generates space around elements */
     border-style: solid;
     border-width: 9.5px 0 9.5px 17px; /* creates the triangle */
     			/* REMINDER: top right bottom left */
     border-color: transparent transparent transparent rgba(72, 73, 74, 1);
+	top: 5px;
+	left: 17px;
 }
 
 a {
     font-family: "Ubuntu", sans-serif;
+    position: relative;
     font-size: 14px;
     background-color: rgb(210, 213, 217);
-    display: block;
+    display: inline-block;
     height: 30px;
     width: 67px;
     color: #48494A;
     border-radius: 5px;
     cursor: pointer;
-    bottom: -117px;
 }
 
 a:hover {
 	background-color: rgb(255, 0, 0);
 }
 
-/* p tag */
+/* download text/p tag */
 
 .download {	
   position: relative;
-  bottom: 8px;
-  left: 2px;
+  bottom: 5px;
+  left: 1px;
 }
 
 /* //////////// CLEAR CANVAS //////////// */
 .reset {
-	/*position: relative;*/
+	position: relative;
 	height: 30px;
 	width: 45px;
-	bottom: -117px;
-	right: 344px;
 	background: rgb(210, 213, 217);
 	color: rgb(72, 73, 74);
 	border-radius: 5px;
 	cursor: pointer;
+	display: inline-block;
+	margin-right: -58px
 }
 
 .reset:hover {
@@ -237,19 +234,16 @@ a:hover {
 	font-family: "Ubuntu", sans-serif;
 	font-size: 14px;
 	position: relative;
-	bottom: 7px;
-	left: 6px;
+	bottom: 5px;
+	left: 5px;
 }
 
 /* //////////// ALL BUTTONS //////////// */
 .button {
-	/*display: inline-block;*/
-	/*position: absolute;*/
 	position: fixed;
-	margin: auto;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-
+	bottom: 10%;
+	left: 45%;
 }
+
+
 
