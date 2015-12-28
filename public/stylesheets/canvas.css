@@ -11,14 +11,6 @@
 	right: 0;
 }
 
-/*#coloringBook {
-	position: absolute;
-	border: 2px solid #1F2B52;
-	margin: 100px auto 0px 5px;
-	background-color: #FFF;
-	bottom: 0px;
-}*/
-
 #eraseCanvas {
 	position: absolute;
 	top: 218px;
@@ -32,7 +24,11 @@
 	height: 51px;
 	width: 51px;
 	cursor: pointer;
-	margin: 51px 51px;
+	margin: auto;
+	padding: 0px;
+	top: 0;
+	bottom: 0;
+	right: 0;
 }
 
 /*////////////////////////////////////////////////////////////////////*/

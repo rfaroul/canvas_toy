@@ -43,16 +43,13 @@ header {
   padding: 0px;
   height: 204px;
   width: 300px;
-  right: 5px;
-  margin: 5px 5px;
-  float: right;
+  margin: auto;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
-  border: 3px outset #1F2B52;
-  background-image: url('/images/music_notes_bw.jpg');
-  background-position: 83% 54%;
-  background-repeat: no-repeat;
   z-index: -1;
+  top: 0;
+  bottom: 0;
+  right: auto;
 }
 
 .definition p {
