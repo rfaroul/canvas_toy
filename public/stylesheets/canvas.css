@@ -1,10 +1,23 @@
 #coloringBook {
-	position: fixed;
+	position: absolute;
+	display: block;
 	border: 2px solid #1F2B52;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	height: 375px;
+	width: 500px;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
 }
+
+/*#coloringBook {
+	position: absolute;
+	border: 2px solid #1F2B52;
+	margin: 100px auto 0px 5px;
+	background-color: #FFF;
+	bottom: 0px;
+}*/
 
 #eraseCanvas {
 	position: absolute;
@@ -13,8 +26,6 @@
 }
 
 .crayon {
-	position: absolute;
-	/*font-weight: bold;*/
 	position: absolute;
 	color: #000;
 	border-radius: 1px;
