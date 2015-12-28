@@ -11,24 +11,19 @@
 	right: 0;
 }
 
-#eraseCanvas {
+/*#eraseCanvas {
 	position: absolute;
 	top: 218px;
 	right: 484px;
-}
+}*/
 
 .crayon {
-	position: absolute;
 	color: #000;
 	border-radius: 1px;
 	height: 51px;
 	width: 51px;
 	cursor: pointer;
-	margin: auto;
-	padding: 0px;
-	top: 0;
-	bottom: 0;
-	right: 0;
+	margin: 60px 42px;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -36,99 +31,131 @@
 /*//////////////////////  COLORS  ////////////////////////////////*/
 
 #color1 {
+	position: absolute;
 	background-color: #FFFB40;
-	top: 355px;
-	left: 538px;
+	bottom: 405px;
+	right: 10px;
 	text-align: center;
 }
 
 #color2 {
+	/*position: absolute;*/
 	background-color: #744FE8;
-	top: 355px;
-	left: 589px;
+	position: absolute;
+	text-align: center;
+	bottom: 350px;
+	right: 10px;
 }
 
 #color3 {
 	background-color: #FF4CAD;
-	top: 355px;
-	left: 640px;
+	position: absolute;
+	text-align: center;
+	bottom: 295px;
+	right: 10px;
 }
 
 #color4 {
 	background-color: #E82B2D;
-	top: 355px;
-	left: 691px;
+	position: absolute;
+	text-align: center;
+	bottom: 240px;
+	right: 10px;
 }
 
 #color5 {
 	background-color: #FFCFB4; 
-	top: 406px;
-	left: 538px;
+	position: absolute;
+	text-align: center;
+	bottom: 185px;
+	right: 10px;
 }
 #color6 {
 	background-color: #966643; 
-	top: 406px;
-	left: 589px;
+	position: absolute;
+	text-align: center;
+	bottom: 130px;
+	right: 10px;
 }
 
 #color7 {
 	background-color: #999999; 
-	top: 406px;
-	left: 640px;
+	position: absolute;
+	text-align: center;
+	bottom: 75px;
+	right: 10px;
 }
 
 #color8 {
 	background-color: #E8A22B; 
-	top: 406px;
-	left: 691px;
+	position: absolute;
+	text-align: center;
+	bottom: 20px;
+	right: 10px;
 }
 
 #color9 {
 	background-color: #FF806E; 
-	top: 457px;
-	left: 538px;
+	position: absolute;
+	text-align: center;
+	bottom: 20px;
+	right: 66px;
 }
 
 #color10 {
 	background-color: #323AE8; 
-	top: 457px;
-	left: 589px;
+	position: absolute;
+	text-align: center;
+	bottom: 75px;
+	right: 66px;
 }
 
 #color11 {
 	background-color: #89FF9B; 
-	top: 457px;
-	left: 640px;
+	position: absolute;
+	text-align: center;
+	bottom: 130px;
+	right: 66px;
 }
 
 #color12 {
 	background-color: #892F9B; 
-	top: 457px;
-	left: 691px;
+	position: absolute;
+	text-align: center;
+	bottom: 185px;
+	right: 66px;
 }
 
 #color13 {
 	background-color: #C384B1; 
-	top: 508px;
-	left: 538px;
+	position: absolute;
+	text-align: center;
+	bottom: 240px;
+	right: 66px;
 }
 
 #color14 {
 	background-color: #FB7FFF; 
-	top: 508px;
-	left: 589px;
+	position: absolute;
+	text-align: center;
+	bottom: 295px;
+	right: 66px;
 }
 
 #color15 {
 	background-color: #34A76C; 
-	top: 508px;
-	left: 640px;
+	position: absolute;
+	text-align: center;
+	bottom: 350px;
+	right: 66px;
 }
 
 #color16 {
 	background-color: #CD4A4C; 
-	top: 508px;
-	left: 691px;
+	position: absolute;
+	text-align: center;
+	bottom: 405px;
+	right: 66px;
 }
 
 /*////////////////////////////////////////////////////////////////////*/
@@ -136,17 +163,19 @@
 /*//////////////////////  NOTES/SOUNDS  ////////////////////////////////*/
 
 .play-button {
-	top: 302px;
-	left: 523px;
+	/*top: 302px;
+	left: 523px;*/
 	height: 30px;
 	width: 45px;
-	background-color: rgba(31, 43, 82, 0.7); /* purple/grey */
+	background-color: rgb(210, 213, 217);
 	border-radius: 5px;
-	position: absolute;
+	/*position: relative;*/
+	bottom: -117px;
+	right: 237px;
 }
 
 .play-button:hover {
-    background-color: rgba(31, 43, 82, 1);
+    background-color: rgb(255, 0, 0);
 }
 
 .play-button:after {
@@ -159,40 +188,49 @@
     border-style: solid;
     border-width: 9.5px 0 9.5px 17px; /* creates the triangle */
     			/* REMINDER: top right bottom left */
-    border-color: transparent transparent transparent rgba(54, 204, 178, 1);
+    border-color: transparent transparent transparent rgba(72, 73, 74, 1);
 }
 
 a {
     font-family: "Ubuntu", sans-serif;
     font-size: 14px;
-    background: rgba(31, 43, 82, 0.7);
+    background-color: rgb(210, 213, 217);
     display: block;
     height: 30px;
     width: 67px;
-    top: 302px;
-    left: 573px;
-    color: rgb(54, 204, 178);
-    position: absolute;
+    color: #48494A;
     border-radius: 5px;
     cursor: pointer;
+    bottom: -117px;
 }
 
-.download {
+a:hover {
+	background-color: rgb(255, 0, 0);
+}
+
+/* p tag */
+
+.download {	
   position: relative;
   bottom: 8px;
   left: 2px;
 }
 
+/* //////////// CLEAR CANVAS //////////// */
 .reset {
-	position: absolute;
+	/*position: relative;*/
 	height: 30px;
 	width: 45px;
-	top: 302px;
-	left: 645px;
-	background: rgba(31, 43, 82, 0.7);
-	color: rgb(54, 204, 178);
+	bottom: -117px;
+	right: 344px;
+	background: rgb(210, 213, 217);
+	color: rgb(72, 73, 74);
 	border-radius: 5px;
 	cursor: pointer;
+}
+
+.reset:hover {
+	background-color: rgb(255, 0, 0);
 }
 
 .reset p {
@@ -203,10 +241,15 @@ a {
 	left: 6px;
 }
 
+/* //////////// ALL BUTTONS //////////// */
 .button {
-	display: inline-block;
-	position: absolute;
-	margin: auto 0px 5px 0px;
-	bottom: 40px;
+	/*display: inline-block;*/
+	/*position: absolute;*/
+	position: fixed;
+	margin: auto;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+
 }
 
