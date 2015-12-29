@@ -12,13 +12,8 @@
 	right: 0;
 }
 
-/*#eraseCanvas {
-	position: absolute;
-	top: 218px;
-	right: 484px;
-}*/
-
 .crayon {
+	position: relative;
 	color: #000;
 	border-radius: 1px;
 	height: 51px;
@@ -27,7 +22,6 @@
 	margin: 60px 42px;
 }
 
-/*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  COLORS  ////////////////////////////////*/
 
@@ -40,9 +34,8 @@
 }
 
 #color2 {
-	/*position: absolute;*/
-	background-color: #744FE8;
 	position: absolute;
+	background-color: #744FE8;
 	text-align: center;
 	bottom: 350px;
 	right: 10px;
@@ -223,7 +216,7 @@ a:hover {
 	border-radius: 5px;
 	cursor: pointer;
 	display: inline-block;
-	margin-right: -58px
+	margin-left: 137px
 }
 
 .reset:hover {
@@ -242,7 +235,7 @@ a:hover {
 .button {
 	position: fixed;
 	bottom: 10%;
-	left: 45%;
+	left: 41%;
 }
 
 

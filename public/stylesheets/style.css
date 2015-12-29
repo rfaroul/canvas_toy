@@ -38,47 +38,23 @@ header {
  }
 
 .definition {
-  position: absolute;
+ /* position: absolute;
   display: block;
-  padding: 0px;
+  padding: 0px;*/
   height: 204px;
-  width: 300px;
-  margin: auto;
+  width: 426px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
-  z-index: -1;
-  top: 0;
+  /*z-index: -1;*/
+  /*top: 0;
   bottom: 0;
-  right: auto;
+  right: auto;*/
   overflow: hidden;
 }
 
 .definition p {
   position: relative;
   top: 24px;
-}
-
-.directions {
-  position: absolute;
-  padding: 0px;
-  display: block;
-  height: 317px;
-  width: 300px;
-  border: 3px outset #1F2B52;
-  background-color: #DADDE0;
-  margin: 0px 5px;
-  bottom: 10px;
-  right: 5px;
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
-  float: right;
-  background-image: url('/images/music_notes_bw.jpg');
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  z-index: -1;
-}
-
-.directions p {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 15px;
 }
