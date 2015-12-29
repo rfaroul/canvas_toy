@@ -38,19 +38,13 @@ header {
  }
 
 .definition {
- /* position: absolute;
   display: block;
-  padding: 0px;*/
   height: 204px;
   width: 426px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   font-family: "Ubuntu", sans-serif;
-  /*z-index: -1;*/
-  /*top: 0;
-  bottom: 0;
-  right: auto;*/
   overflow: hidden;
 }
 

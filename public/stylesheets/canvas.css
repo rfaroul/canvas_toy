@@ -1,12 +1,11 @@
 #coloringBook {
 	position: absolute;
-	/* when position is relative, canvas is at horizontally centered, not vertically  */
 	display: block; /* block has whitespace above and below and tolerates no HTML elements next to it, except when ordered otherwise (by adding a float declaration to another element, for instance).  */
 	border: 2px solid #1F2B52;
 	height: 375px;
 	width: 500px;
 	margin: auto;
-	top: 0;
+	top: 174px;
 	left: 0;
 	bottom: 0;
 	right: 0;
