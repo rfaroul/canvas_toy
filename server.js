@@ -14,7 +14,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main', extname: 'handlebars'}))
 app.set('views', path.join(root, 'views'));
 app.set('view engine', 'handlebars');
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(logger('dev'));
 
