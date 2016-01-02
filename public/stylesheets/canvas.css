@@ -1,6 +1,6 @@
 #coloringBook {
 	position: absolute;
-	display: block; /* block has whitespace above and below and tolerates no HTML elements next to it, except when ordered otherwise (by adding a float declaration to another element, for instance).  */
+	display: block; 
 	border: 2px solid #1F2B52;
 	height: 375px;
 	width: 500px;
@@ -26,132 +26,131 @@
 
 #color1 {
 	position: absolute;
+	text-align: center;
 	background-color: #FFFB40;
 	bottom: 405px;
 	right: 10px;
-	text-align: center;
 }
 
 #color2 {
 	position: absolute;
-	background-color: #744FE8;
 	text-align: center;
+	background-color: #744FE8;
 	bottom: 350px;
 	right: 10px;
 }
 
 #color3 {
-	background-color: #FF4CAD;
 	position: absolute;
 	text-align: center;
+	background-color: #FF4CAD;
 	bottom: 295px;
 	right: 10px;
 }
 
 #color4 {
-	background-color: #E82B2D;
 	position: absolute;
 	text-align: center;
+	background-color: #E82B2D;
 	bottom: 240px;
 	right: 10px;
 }
 
 #color5 {
-	background-color: #FFCFB4; 
 	position: absolute;
 	text-align: center;
+	background-color: #FFCFB4; 
 	bottom: 185px;
 	right: 10px;
 }
 #color6 {
-	background-color: #966643; 
 	position: absolute;
 	text-align: center;
+	background-color: #966643; 
 	bottom: 130px;
 	right: 10px;
 }
 
 #color7 {
-	background-color: #999999; 
 	position: absolute;
 	text-align: center;
+	background-color: #999999; 
 	bottom: 75px;
 	right: 10px;
 }
 
 #color8 {
-	background-color: #E8A22B; 
 	position: absolute;
 	text-align: center;
+	background-color: #E8A22B;
 	bottom: 20px;
 	right: 10px;
 }
 
 #color9 {
-	background-color: #FF806E; 
 	position: absolute;
 	text-align: center;
+	background-color: #FF806E; 
 	bottom: 20px;
 	right: 66px;
 }
 
 #color10 {
-	background-color: #323AE8; 
 	position: absolute;
 	text-align: center;
+	background-color: #323AE8;
 	bottom: 75px;
 	right: 66px;
 }
 
 #color11 {
-	background-color: #89FF9B; 
 	position: absolute;
 	text-align: center;
+	background-color: #89FF9B; 
 	bottom: 130px;
 	right: 66px;
 }
 
 #color12 {
-	background-color: #892F9B; 
 	position: absolute;
 	text-align: center;
+	background-color: #892F9B; 
 	bottom: 185px;
 	right: 66px;
 }
 
 #color13 {
-	background-color: #C384B1; 
 	position: absolute;
 	text-align: center;
+	background-color: #C384B1; 
 	bottom: 240px;
 	right: 66px;
 }
 
 #color14 {
-	background-color: #FB7FFF; 
 	position: absolute;
 	text-align: center;
+	background-color: #FB7FFF; 
 	bottom: 295px;
 	right: 66px;
 }
 
 #color15 {
-	background-color: #34A76C; 
 	position: absolute;
 	text-align: center;
+	background-color: #34A76C; 
 	bottom: 350px;
 	right: 66px;
 }
 
 #color16 {
-	background-color: #CD4A4C; 
 	position: absolute;
 	text-align: center;
+	background-color: #CD4A4C; 
 	bottom: 405px;
 	right: 66px;
 }
 
-/*////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////*/
 /*//////////////////////  BUTTONS  ////////////////////////////////*/
 
@@ -174,18 +173,17 @@
     position: relative;
     border-style: solid;
     border-width: 9.5px 0 9.5px 17px; /* creates the triangle */
-    			/* REMINDER: top right bottom left */
     border-color: transparent transparent transparent rgba(72, 73, 74, 1);
 	top: 5px;
 	left: 17px;
 }
 
 a {
+    display: inline-block;
+	position: relative;
     font-family: "Ubuntu", sans-serif;
-    position: relative;
     font-size: 14px;
     background-color: rgb(210, 213, 217);
-    display: inline-block;
     height: 30px;
     width: 67px;
     color: #48494A;
@@ -208,13 +206,13 @@ a:hover {
 /* //////////// CLEAR CANVAS //////////// */
 .reset {
 	position: relative;
+	cursor: pointer;
+	display: inline-block;
 	height: 30px;
 	width: 45px;
 	background: rgb(210, 213, 217);
 	color: rgb(72, 73, 74);
 	border-radius: 5px;
-	cursor: pointer;
-	display: inline-block;
 	margin-left: 137px
 }
 
@@ -223,9 +221,9 @@ a:hover {
 }
 
 .reset p {
+	position: relative;
 	font-family: "Ubuntu", sans-serif;
 	font-size: 14px;
-	position: relative;
 	bottom: 5px;
 	left: 5px;
 }
@@ -233,9 +231,6 @@ a:hover {
 /* //////////// ALL BUTTONS //////////// */
 .button {
 	position: fixed;
-	bottom: 10%;
+	bottom: 4%;
 	left: 41%;
 }
-
-
-
