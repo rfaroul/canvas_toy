@@ -8,7 +8,8 @@ path = require('path'),
 bodyParser = require('body-parser'); //parses JSON objects
 root = __dirname;
 
-app.listen(3000);
+var port = process.env.PORT || CONFIG.port;
+app.listen(port);
 
 app.engine('handlebars', exphbs({defaultLayout: 'main', extname: 'handlebars'}));
 app.set('views', path.join(root, 'views'));
