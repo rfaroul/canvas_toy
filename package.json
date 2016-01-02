@@ -1,5 +1,5 @@
 {
-  "name": "color_in_chrome",
+  "name": "canvas_toy",
   "version": "1.0.0",
   "description": "Color In Chrome",
   "main": "server.js",
