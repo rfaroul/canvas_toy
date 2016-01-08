@@ -21,7 +21,7 @@ body > div:nth-child(1) > #definition {
 
 body > div:nth-child(1) > #coloringBook { 
     order: 3;
-    border: 2px solid #1F2B52;
+    border: 2px dotted #1F2B52;
     width: 500px;
     display: block;
     margin-left: auto;
@@ -32,11 +32,13 @@ body > div:nth-child(1) > #crayon { order: 4; flex: 0 1 200px; }
 
 body > div:nth-child(1) > .container .button { order: 5; height: 20px; }
 
-body > div:nth-child(1) > footer { order: 5; height: 30px; flex: 0 1 100%;}
+body > div:nth-child(1) > footer { order: 5; height: 5px; flex: 0 1 100%;}
 
 footer p { 
   margin-left: 0px;
   margin-top: 5px;
+  text-align: center;
+  font-size: 10px;
  }
 
 .button {
@@ -48,4 +50,12 @@ footer p {
   text-align: center;
   overflow: hidden;
   cursor: pointer;
+  display: inline-block;
+}
+
+#button {
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
