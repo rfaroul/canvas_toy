@@ -3,48 +3,25 @@ html,body
   width: 100%;
   height: 100%;
   margin: 0px;
-  padding: 0px; /* unsure about this */
+  padding: 0px;
 }
 
+.container {
+  display: flex;
+  flex-row: wrap;
+}
+
+body > div:nth-child(1) > header, footer, .container {
+  background: #CCC;
+  border-radius: 7px;
+  margin: 5px;
+  padding: 20px;
+}
 
 header {
-  position: relative;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  text-align: left;
-  font-size: 12px;
-  line-height: 108px;
-  height: 100px;
-  margin: 0px 0px 0px 0px;
+  order: 1; height: 100px; flex: 0 1 100%;
 }
 
-.title {
-  position: fixed;
-  height: 100px;
-  width: 100%;
-  font-family: "Ubuntu", sans-serif;
-  text-align: center;
-  background-color: rgb(210, 213, 217);
-  color: #48494A;
-  font-size: 500%;
-  font-weight: 400;
-  margin: 0px auto 0px auto;
-  z-index: 1; 
- }
-
-.definition {
-  display: block;
-  height: 204px;
-  width: 426px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
-  overflow: hidden;
-}
-
-.definition p {
-  position: relative;
-  top: 24px;
+footer {
+  order: 100; height: 100px; flex: 0 1 100%;
 }
