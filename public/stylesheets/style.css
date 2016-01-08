@@ -1,11 +1,6 @@
 body { margin: 0px;
 font-family: "Ubuntu", sans-serif; }
 
-/*body > div:nth-child(1) {
-  display: flex;
-  flex-row: row wrap;
-}
-*/
 body > div:nth-child(1) > header, footer, .container {
   background: #CCC;
   border-radius: 7px;
@@ -19,24 +14,23 @@ body > div:nth-child(1) > header {
 
 h1 { margin: 0px; }
 
-body > div:nth-child(1) > #definition {
-  order: 2; flex: 0 1 50px;
-}
+body > div:nth-child(1) > #definition { 
+    order: 2; flex: 0 1 50px;
+    width: 285px; margin: auto;
+ }
 
-.container#definition {
-  width: 285px;
-  margin: auto;
-}
-
-body > div:nth-child(1) > #coloringBook {
-  order: 3;
+body > div:nth-child(1) > #coloringBook { 
+    order: 3;
+    border: 2px solid #1F2B52;
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body > div:nth-child(1) > #crayon { order: 4; flex: 0 1 200px; }
 
-body > div:nth-child(1) > .container .button {
-  order: 5; height: 20px;
-}
+body > div:nth-child(1) > .container .button { order: 5; height: 20px; }
 
 body > div:nth-child(1) > footer { order: 5; height: 30px; flex: 0 1 100%;}
 
