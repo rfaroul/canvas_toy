@@ -148,28 +148,6 @@ function redraw() {
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
-//want to save the canvas state 
-//save image as data url (png format by default)
-var flexBox = document.getElementById('flex-box');
-var link = document.createElement('a');
-var p = document.createElement('p');
-var downloadDiv = document.createElement('div');
-$(downloadDiv).addClass('container');
-p.innerHTML = 'download';
-// $(link).addClass('button save');
-link.appendChild(p);
-downloadDiv.appendChild(link);
-link.addEventListener('click', function (ev) {
-	link.href = canvas.toDataURL();
-    link.download = "mypainting.png";
-}, false);
-flexBox.appendChild(downloadDiv);
-
-// To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
-
-// Note: The toDataURL() method requires that any images drawn onto the canvas are hosted on a web server with the same domain as the code executing it.  If this condition is not met, a SECURITY_ERR exception is thrown.
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// AUDIO CLICK EVENT FOR MULTIPLE SOUNDS //////////////////
 
 console.log("before the click event");
@@ -265,6 +243,28 @@ function resetCanvas() {
 
 $('.reset').click(resetCanvas);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
+//want to save the canvas state 
+//save image as data url (png format by default)
+var flexBox = document.getElementById('flex-box');
+var container = document.getElementsByClassName('container')[3];
+var downloadDiv = document.createElement('div');
+$(downloadDiv).addClass('download');
+var link = document.createElement('a');
+var p = document.createElement('p');
+p.innerHTML = 'download';
+link.appendChild(p);
+downloadDiv.appendChild(link);
+link.addEventListener('click', function (ev) {
+	link.href = canvas.toDataURL();
+    link.download = "mypainting.png";
+}, false);
+container.appendChild(downloadDiv);
+
+// To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
+
+// Note: The toDataURL() method requires that any images drawn onto the canvas are hosted on a web server with the same domain as the code executing it.  If this condition is not met, a SECURITY_ERR exception is thrown.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// ONLOAD FUNCTIONS //////////////////

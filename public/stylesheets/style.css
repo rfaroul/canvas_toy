@@ -6,7 +6,7 @@ html,body
   padding: 0px;
 }
 
-.container {
+.flex-box {
   display: flex;
   flex-row: wrap;
 }
