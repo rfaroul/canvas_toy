@@ -1,16 +1,11 @@
-html,body
-{
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-}
+body { margin: 0px;
+font-family: "Ubuntu", sans-serif; }
 
-.flex-box {
+/*body > div:nth-child(1) {
   display: flex;
-  flex-row: wrap;
+  flex-row: row wrap;
 }
-
+*/
 body > div:nth-child(1) > header, footer, .container {
   background: #CCC;
   border-radius: 7px;
@@ -18,10 +13,45 @@ body > div:nth-child(1) > header, footer, .container {
   padding: 20px;
 }
 
-header {
-  order: 1; height: 100px; flex: 0 1 100%;
+body > div:nth-child(1) > header {
+  order: 1; height: 30px; flex: 0 1 100%;
 }
 
-footer {
-  order: 100; height: 100px; flex: 0 1 100%;
+h1 { margin: 0px; }
+
+body > div:nth-child(1) > #definition {
+  order: 2; flex: 0 1 50px;
+}
+
+.container#definition {
+  width: 285px;
+  margin: auto;
+}
+
+body > div:nth-child(1) > #coloringBook {
+  order: 3;
+}
+
+body > div:nth-child(1) > #crayon { order: 4; flex: 0 1 200px; }
+
+body > div:nth-child(1) > .container .button {
+  order: 5; height: 20px;
+}
+
+body > div:nth-child(1) > footer { order: 5; height: 30px; flex: 0 1 100%;}
+
+footer p { 
+  margin-left: 0px;
+  margin-top: 5px;
+ }
+
+.button {
+  background-color: rgb(255, 0, 0);
+  height: 30px;
+  width: 45px;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
 }

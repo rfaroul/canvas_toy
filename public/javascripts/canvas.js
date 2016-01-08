@@ -182,7 +182,7 @@ function playAudio ( userSong ) {
 		//restart Audio when finished playing for specified length of time
 };
 
-$('.play-button').click( function(event){
+$('#play-button').click( function(event){
 	playAudio( song );
 } );
 	
@@ -241,7 +241,7 @@ function resetCanvas() {
     console.log("what's in the song array?", song);
 };
 
-$('.reset').click(resetCanvas);
+$('#reset').click(resetCanvas);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
@@ -250,7 +250,7 @@ $('.reset').click(resetCanvas);
 var flexBox = document.getElementById('flex-box');
 var container = document.getElementsByClassName('container')[3];
 var downloadDiv = document.createElement('div');
-$(downloadDiv).addClass('download');
+$(downloadDiv).addClass('button');
 var link = document.createElement('a');
 var p = document.createElement('p');
 p.innerHTML = 'download';
