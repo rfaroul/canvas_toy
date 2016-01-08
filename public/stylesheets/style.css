@@ -1,5 +1,14 @@
-body { margin: 0px;
-font-family: "Ubuntu", sans-serif; }
+body { 
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif; }
+
+body > div:nth-child(1) {
+  display: flex;
+  flex-flow: row; 
+  flex-wrap: wrap;
+  align-items: stretch;
+}
 
 body > div:nth-child(1) > header, footer, .container {
   background: #CCC;
@@ -9,30 +18,66 @@ body > div:nth-child(1) > header, footer, .container {
 }
 
 body > div:nth-child(1) > header {
-  order: 1; height: 30px; flex: 0 1 100%;
+  order: 1; 
+  height: 30px; 
+  flex: 0 1 100%;
+  background: tomato;
 }
 
 h1 { margin: 0px; }
 
 body > div:nth-child(1) > #definition { 
-    order: 2; flex: 0 1 50px;
-    width: 285px; margin: auto;
+    order: 2; 
+    /*flex: 0 0 243px;
+    width: 285px;*/ 
+    margin: auto;
+    text-align: left;
+    background: gold;
  }
 
 body > div:nth-child(1) > #coloringBook { 
     order: 3;
     border: 2px dotted #1F2B52;
+    height: 375px;
     width: 500px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-body > div:nth-child(1) > #crayon { order: 4; flex: 0 1 200px; }
+body > div:nth-child(1) > #crayon { 
+  order: 4; 
+  flex: 0 1 85px; 
+  /*float: right;
+*/  padding: 2px;
+background: hotpink;
+  /*display: flex;
+  flex-direction: column;
+  justify-content: center;*/
+}
 
-body > div:nth-child(1) > .container .button { order: 5; height: 20px; }
+.crayon {
+  background: #CCC;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  padding: 5px;
+  margin: 2px;
+}
+body > div:nth-child(1) > #button { 
+  order: 5; 
+  height: 20px; 
+  background: deepskyblue;
+}
 
-body > div:nth-child(1) > footer { order: 5; height: 5px; flex: 0 1 100%;}
+body > div:nth-child(1) > footer { 
+  order: 6; 
+  height: 5px; 
+  flex: 0 1 100%;
+  background: lightgreen;
+}
 
 footer p { 
   margin-left: 0px;
@@ -42,7 +87,7 @@ footer p {
  }
 
 .button {
-  background-color: rgb(255, 0, 0);
+  background: #CCC;
   height: 30px;
   width: 45px;
   border-radius: 5px;
@@ -57,5 +102,21 @@ footer p {
   width: 150px;
   margin-left: auto;
   margin-right: auto;
-  display: block;
 }
+
+#crayon {
+  
+}
+
+.crayon p {
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
