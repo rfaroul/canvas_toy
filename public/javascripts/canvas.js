@@ -151,6 +151,7 @@ function redraw() {
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
 //save image as data url (png format by default)
+var flexBox = document.getElementById('flex-box');
 var link = document.createElement('a');
 var p = document.createElement('p');
 $(p).addClass('download');
@@ -161,7 +162,7 @@ link.addEventListener('click', function (ev) {
 	link.href = canvas.toDataURL();
     link.download = "mypainting.png";
 }, false);
-document.body.appendChild(link);
+flexBox.appendChild(link);
 
 // To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
 
