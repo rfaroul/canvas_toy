@@ -247,12 +247,14 @@ $('#reset').click(resetCanvas);
 ////////////////// SAVE THE DRAWING/CANVAS STATE //////////////////
 //want to save the canvas state 
 //save image as data url (png format by default)
+var link = document.createElement('a');
+var p = document.createElement('p');
 var flexBox = document.getElementById('flex-box');
 var container = document.getElementsByClassName('container')[3];
 var downloadDiv = document.createElement('div');
 $(downloadDiv).addClass('button');
-var link = document.createElement('a');
-var p = document.createElement('p');
+$(downloadDiv).addClass('download');
+$(downloadDiv).addClass('arrow-down');
 p.innerHTML = 'download';
 link.appendChild(p);
 downloadDiv.appendChild(link);
@@ -261,6 +263,7 @@ link.addEventListener('click', function (ev) {
     link.download = "mypainting.png";
 }, false);
 container.appendChild(downloadDiv);
+
 
 // To save the canvas drawing as an image, we can set the source of an image object to the image data URL.  From there, a user can right click on the image to save it to their local computer.  Alternatively, we could also open up a new browser window with the image data url directly and the user could save it from there.
 
